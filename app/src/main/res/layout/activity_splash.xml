@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SplashActivity">
+
+    <ImageView
+        android:id="@+id/ivSplashPicture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_splash" />
+
+    <ImageView
+        android:id="@+id/ivSlogan"
+        android:layout_width="@dimen/qb_px_150"
+        android:layout_height="@dimen/qb_px_56"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/qb_px_330"
+        android:padding="@dimen/qb_px_8"
+        android:src="@mipmap/ic_logo_slogan" />
+
+    <com.cryallen.wanlearning.ui.view.TypefaceTextView
+        android:id="@+id/tvSlogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/qb_px_100"
+        android:layout_centerHorizontal="true"
+        android:text="@string/slogan_two"
+        android:textColor="@color/color_CCFFFFFF"
+        android:textSize="@dimen/sb_px_26"
+        app:typeface="lobsterTypeface" />
+
+</RelativeLayout>
