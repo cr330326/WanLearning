@@ -21,7 +21,10 @@ import kotlinx.coroutines.launch
  ***/
 class SplashActivity : BaseActivity() {
 
-	private lateinit var viewBinding: ActivitySplashBinding
+	private var _binding: ActivitySplashBinding? = null
+
+	private val binding: ActivitySplashBinding
+		get() = _binding!!
 
 	private val splashDuration = 3 * 1000L
 
@@ -41,18 +44,19 @@ class SplashActivity : BaseActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		viewBinding = ActivitySplashBinding.inflate(layoutInflater)
-		setContentView(viewBinding.root)
+		_binding = ActivitySplashBinding.inflate(layoutInflater)
+		setContentView(binding.root)
 	}
 
 	override fun onDestroy() {
 		super.onDestroy()
+		_binding = null
 	}
 
 	override fun setupViews() {
 		super.setupViews()
-		viewBinding.ivSlogan.startAnimation(alphaAnimation)
-		viewBinding.ivSplashPicture.startAnimation(scaleAnimation)
+		binding.ivSlogan.startAnimation(alphaAnimation)
+		binding.ivSplashPicture.startAnimation(scaleAnimation)
 		lifecycleScope.launch {
 			delay(splashDuration)
 			MainActivity.start(this@SplashActivity)
