@@ -33,9 +33,9 @@ versions.deviceid = "1.0.9"
 versions.junit = "4.13.2"
 versions.leakcanary = "2.7"
 versions.immersionbar = "3.0.0"
-versions.ptr = "1.0.11"
 versions.loadingview = "1.0"
 versions.smartrefresh = "2.0.1"
+versions.logger = "2.2.0"
 ext.versions = versions
 
 /**

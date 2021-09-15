@@ -156,4 +156,7 @@ dependencies {
 
     // 加载动画
     implementation("com.ldoublem.loadingview:loadingviewlib:${versions.loadingview}")
+
+    // logger
+    implementation ("com.orhanobut:logger:${versions.logger}")
 }

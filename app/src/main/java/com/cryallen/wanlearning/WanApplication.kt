@@ -3,6 +3,7 @@ package com.cryallen.wanlearning
 import android.app.Application
 import android.content.Context
 import com.cryallen.wanlearning.utils.LogUtils
+import com.cryallen.wanlearning.utils.LoggerUtils
 import com.cryallen.wanlearning.utils.XKeyValue
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
@@ -22,6 +23,7 @@ class WanApplication : Application() {
 		//默认打开日志开关
 		LogUtils.setDebuggable(true)
 		LogUtils.setTagName("WanApp_Logger")
+		LoggerUtils.init(true)
 
 		//Lambda表达式写法
 		SmartRefreshLayout.setDefaultRefreshInitializer{ context, layout ->
