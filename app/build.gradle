@@ -100,6 +100,8 @@ dependencies {
     kapt("androidx.room:room-compiler:${versions.androidx_room}")
     implementation("androidx.work:work-runtime:${versions.androidx_work_manager}")
     implementation("androidx.work:work-runtime-ktx:${versions.androidx_work_manager}")
+    implementation("androidx.paging:paging-runtime:${versions.androidx_paging_runtime}")
+    implementation("androidx.paging:paging-runtime-ktx:${versions.androidx_paging_runtime}")
 
     // 微信MMKV
     implementation("com.tencent:mmkv:${versions.mmkv}")
