@@ -1,4 +1,4 @@
-package com.nan.xarch.constant
+package com.cryallen.wanlearning.constant
 
 import androidx.annotation.StringDef
 

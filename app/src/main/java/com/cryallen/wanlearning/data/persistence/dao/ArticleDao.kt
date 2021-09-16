@@ -1,10 +1,10 @@
-package com.cryallen.wanlearning.persistence.dao
+package com.cryallen.wanlearning.data.persistence.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.cryallen.wanlearning.persistence.entity.ArticleEntity
+import com.cryallen.wanlearning.data.persistence.entity.ArticleEntity
 
 /***
  * 文章数据访问类

@@ -15,4 +15,6 @@ object CommonConfig {
 
 	//连接服务器超时时间为10秒
 	const val NETWORK_CONNECT_TIME_OUT = 10
+
+	const val DATABASE_NAME = "wan-db"
 }

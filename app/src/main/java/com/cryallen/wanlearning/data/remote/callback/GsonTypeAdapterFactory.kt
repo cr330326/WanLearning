@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.network.callback
+package com.cryallen.wanlearning.data.remote.callback
 
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter

@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.persistence.entity
+package com.cryallen.wanlearning.data.persistence.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

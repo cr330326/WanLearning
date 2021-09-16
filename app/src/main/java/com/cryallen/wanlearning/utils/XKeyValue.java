@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
-import com.nan.xarch.constant.MMKVKey;
+import com.cryallen.wanlearning.constant.MMKVKey;
 import com.tencent.mmkv.MMKV;
 
 import java.util.Map;
@@ -16,8 +16,6 @@ import java.util.Set;
  * 本类为MMKV的封装类，防止代码入侵
  */
 public final class XKeyValue {
-
-    public static final String TAG = "XMMKV";
     private static final String ID_DEFAULT = "id_default";
 
     private XKeyValue() {

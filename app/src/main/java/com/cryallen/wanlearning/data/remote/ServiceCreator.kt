@@ -1,7 +1,7 @@
-package com.cryallen.wanlearning.network
+package com.cryallen.wanlearning.data.remote
 
 import com.cryallen.wanlearning.constant.CommonConfig
-import com.cryallen.wanlearning.network.callback.GsonTypeAdapterFactory
+import com.cryallen.wanlearning.data.remote.callback.GsonTypeAdapterFactory
 import com.cryallen.wanlearning.utils.JsonUtils
 import com.cryallen.wanlearning.utils.LoggerUtils
 import com.google.gson.GsonBuilder
