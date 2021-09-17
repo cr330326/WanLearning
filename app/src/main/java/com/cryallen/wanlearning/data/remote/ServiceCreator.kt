@@ -44,6 +44,7 @@ object ServiceCreator {
 			.retryOnConnectionFailure(true)
 			.addInterceptor(HeaderInterceptor())
 			.addInterceptor(loggingInterceptor)
+
 		return builder.build()
 	}
 

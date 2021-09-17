@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType
  * @author vsh9p8q
  * @DATE 2021/9/13
  ***/
-abstract class BaseActivityMvvm<V : ViewDataBinding, VM : BaseViewModelMvvm> : BaseActivity(), IBaseViewMvvm {
+abstract class BaseActivityMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseActivity(), IBaseViewMvvm {
 	private lateinit var binding: V
 	private lateinit var viewModel: VM
 	private var viewModelId = 0
@@ -53,7 +53,7 @@ abstract class BaseActivityMvvm<V : ViewDataBinding, VM : BaseViewModelMvvm> : B
 			type.actualTypeArguments[1] as Class<VM>
 		} else {
 			//如果没有指定泛型参数，则默认使用BaseViewModelMvvm
-			BaseViewModelMvvm::class.java as Class<VM>
+			BaseViewModel::class.java as Class<VM>
 		}
 		viewModel = createViewModel(this, modelClass)
 		//关联ViewModel

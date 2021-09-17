@@ -8,15 +8,26 @@ import com.cryallen.wanlearning.data.persistence.dao.ArticleDao
  * @author vsh9p8q
  * @DATE 2021/9/15
  ***/
-class LocalRepository {
+class LocalRepository private constructor(private val localDatabase: LocalDatabase) {
 
 	fun provideArticleDao(): ArticleDao {
-		return LocalDatabase.articleDao()
+		return localDatabase.articleDao()
 	}
 
 	companion object {
-		val instance: LocalRepository by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-			LocalRepository()
+
+		private var repository: LocalRepository? = null
+
+		fun getInstance(local: LocalDatabase): LocalRepository {
+			if (repository == null) {
+				synchronized(LocalRepository::class.java) {
+					if (repository == null) {
+						repository = LocalRepository(local)
+					}
+				}
+			}
+
+			return repository!!
 		}
 	}
 }

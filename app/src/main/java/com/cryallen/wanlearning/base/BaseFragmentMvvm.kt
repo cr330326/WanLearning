@@ -16,7 +16,7 @@ import java.lang.reflect.ParameterizedType
  * @author vsh9p8q
  * @DATE 2021/9/14
  ***/
-abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModelMvvm> : BaseFragment(), IBaseViewMvvm {
+abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseFragment(), IBaseViewMvvm {
 	private lateinit var binding: V
 	private lateinit var viewModel: VM
 	private var viewModelId = 0
@@ -66,7 +66,7 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModelMvvm> : B
 			type.actualTypeArguments[1] as Class<VM>
 		} else {
 			//如果没有指定泛型参数，则默认使用BaseViewModel
-			BaseViewModelMvvm::class.java as Class<VM>
+			BaseViewModel::class.java as Class<VM>
 		}
 		viewModel = createViewModel(this, modelClass)
 

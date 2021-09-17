@@ -12,7 +12,7 @@ import androidx.lifecycle.OnLifecycleEvent
  * @author Allen
  * @DATE 2020-03-13
  ***/
-interface IBaseViewModelMvvm : LifecycleObserver {
+interface IBaseViewModel : LifecycleObserver {
 
 	@OnLifecycleEvent(Lifecycle.Event.ON_ANY)
 	fun onAny(owner: LifecycleOwner?, event: Lifecycle.Event?)

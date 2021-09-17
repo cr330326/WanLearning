@@ -5,7 +5,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
 
 
 /***
@@ -13,11 +12,11 @@ import io.reactivex.functions.Consumer
  * @author vsh9p8q
  * @DATE 2021/9/13
  ***/
-abstract class BaseViewModelMvvm : ViewModel(), IBaseViewModelMvvm, Consumer<Disposable?> {
+abstract class BaseViewModel : ViewModel(), IBaseViewModel {
 	//管理RxJava，主要针对RxJava异步操作造成的内存泄漏
 	private var mCompositeDisposable: CompositeDisposable?
 
-	private fun addSubscribe(disposable: Disposable?) {
+	protected fun addSubscribe(disposable: Disposable?) {
 		if (mCompositeDisposable == null) {
 			mCompositeDisposable = CompositeDisposable()
 		}
@@ -37,11 +36,6 @@ abstract class BaseViewModelMvvm : ViewModel(), IBaseViewModelMvvm, Consumer<Dis
 		if (mCompositeDisposable != null) {
 			mCompositeDisposable!!.clear()
 		}
-	}
-
-	@Throws(Exception::class)
-	override fun accept(disposable: Disposable?) {
-		addSubscribe(disposable)
 	}
 
 	init {

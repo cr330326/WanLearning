@@ -1,5 +1,5 @@
 package com.cryallen.wanlearning.base
 
-open class BaseModelMvvm : IModelMvvm {
+open class BaseModel : IModel {
     override fun onCleared() {}
 }

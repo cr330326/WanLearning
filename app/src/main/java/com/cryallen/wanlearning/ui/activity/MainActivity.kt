@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.ui
+package com.cryallen.wanlearning.ui.activity
 
 import android.content.Context
 import android.content.Intent
@@ -18,6 +18,7 @@ class MainActivity : BaseActivity() {
 		super.onCreate(savedInstanceState)
 		viewBinding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(viewBinding.root)
+
 	}
 
 	companion object {

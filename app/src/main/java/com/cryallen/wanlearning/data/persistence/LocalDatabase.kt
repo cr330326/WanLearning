@@ -46,9 +46,5 @@ abstract class LocalDatabase : RoomDatabase() {
 				)
 				.build()
 		}
-
-		fun articleDao(): ArticleDao {
-			return getInstance().articleDao()
-		}
 	}
 }

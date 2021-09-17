@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.ui
+package com.cryallen.wanlearning.ui.activity
 
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
