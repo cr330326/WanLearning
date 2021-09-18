@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/qb_px_10"
+    android:elevation="@dimen/qb_px_10"
+    android:translationZ="@dimen/qb_px_10"
+    app:cardCornerRadius="@dimen/qb_px_10">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/qb_px_16">
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sb_px_24"
+            android:textColor="@color/color_666666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/on_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:background="@drawable/bg_fresh"
+            android:padding="@dimen/qb_px_2"
+            android:text="@string/item_on_top"
+            android:textColor="@color/Red"
+            android:textSize="@dimen/sb_px_20"
+            app:layout_constraintBottom_toBottomOf="@+id/author"
+            app:layout_constraintStart_toEndOf="@id/author"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:background="@drawable/bg_fresh"
+            android:padding="@dimen/qb_px_2"
+            android:text="@string/item_fresh"
+            android:textColor="@color/Red"
+            android:textSize="@dimen/sb_px_20"
+            app:layout_constraintBottom_toBottomOf="@+id/author"
+            app:layout_constraintStart_toEndOf="@id/on_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sb_px_24"
+            android:textColor="@color/color_666666"
+            app:layout_constraintBottom_toBottomOf="@id/author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2999-09-09" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginTop="@dimen/qb_px_20"
+            android:layout_marginBottom="@dimen/qb_px_20"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/qb_px_4"
+            android:maxLines="2"
+            android:textColor="@color/color_212121"
+            android:textSize="@dimen/sb_px_28"
+            app:layout_constraintBottom_toTopOf="@+id/desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/author"
+            app:layout_goneMarginStart="@dimen/qb_px_0"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/qb_px_20"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/qb_px_4"
+            android:maxLines="3"
+            android:textSize="@dimen/sb_px_24"
+            app:layout_constraintBottom_toTopOf="@id/chapter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="@dimen/qb_px_240"
+            android:layout_height="@dimen/qb_px_200"
+            android:layout_marginTop="@dimen/qb_px_20"
+            android:layout_marginBottom="@dimen/qb_px_20"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/chapter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author" />
+
+        <TextView
+            android:id="@+id/chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sb_px_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@string/app_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

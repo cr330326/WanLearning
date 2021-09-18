@@ -22,6 +22,6 @@
 
     <include
         android:id="@+id/navigation_bar"
-        layout="@layout/layout_bottom_navigation_bar" />
+        layout="@layout/layout_navigation_bar" />
 
 </LinearLayout>

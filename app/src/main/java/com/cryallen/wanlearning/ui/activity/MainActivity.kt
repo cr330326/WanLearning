@@ -172,20 +172,20 @@ class MainActivity : BaseActivity() {
 
 	private fun clearAllSelected() {
 		//首页
-		binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
-		binding.navigationBar.tvMenuHome.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_default)))
+		binding.navigationBar.tvMenuHome.setTextColor(GlobalUtil.getColor(R.color.color_default))
 		//公众号
-		binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
-		binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_default)))
+		binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtil.getColor(R.color.color_default))
 		//项目
-		binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
-		binding.navigationBar.tvMenuProject.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_default)))
+		binding.navigationBar.tvMenuProject.setTextColor(GlobalUtil.getColor(R.color.color_default))
 		//导航
-		binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
-		binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_default)))
+		binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtil.getColor(R.color.color_default))
 		//我的
-		binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
-		binding.navigationBar.tvMenuMine.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_default)))
+		binding.navigationBar.tvMenuMine.setTextColor(GlobalUtil.getColor(R.color.color_default))
 	}
 
 	private fun hideFragments(transaction: FragmentTransaction) {

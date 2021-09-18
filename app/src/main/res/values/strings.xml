@@ -15,4 +15,6 @@
     <string name="common_load_error">系统异常，请稍后。</string>
     <string name="common_load_refresh">请重试</string>
 
+    <string name="item_on_top">置顶</string>
+    <string name="item_fresh">新</string>
 </resources>

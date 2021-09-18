@@ -18,7 +18,7 @@
         android:text="@string/common_load_error"
         android:layout_marginTop="@dimen/qb_px_20"
         android:layout_marginBottom="@dimen/qb_px_20"
-        android:textColor="@color/color_333333"
+        android:textColor="@color/color_666666"
         android:textSize="@dimen/sb_px_26" />
 
     <Button
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sb_px_28"
+        android:textColor="@color/color_666666"
         android:padding="@dimen/qb_px_10"
         android:gravity="center"
         android:text="@string/common_load_refresh" />
