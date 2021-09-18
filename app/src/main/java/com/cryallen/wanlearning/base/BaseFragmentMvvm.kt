@@ -17,8 +17,8 @@ import java.lang.reflect.ParameterizedType
  * @DATE 2021/9/14
  ***/
 abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseFragment(), IBaseViewMvvm {
-	private lateinit var binding: V
-	private lateinit var viewModel: VM
+	protected lateinit var binding: V
+	protected lateinit var viewModel: VM
 	private var viewModelId = 0
 	private var isNavigationViewInit = false // 记录是否已经初始化过一次视图
 
@@ -45,7 +45,6 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 			initViewDataBinding()
 			//页面数据初始化方法
 			initData()
-			initToolbar()
 			//页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
 			initViewObservable()
 		}
@@ -70,7 +69,11 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 		}
 		viewModel = createViewModel(this, modelClass)
 
-		binding.setVariable(viewModelId, viewModel)
+		if(viewModelId > 0){
+			binding.setVariable(viewModelId, viewModel)
+			binding.executePendingBindings()
+		}
+
 		/*
 		 * 让ViewModel拥有View的生命周期感应
 		 * viewModel implements IBaseViewModel接口
@@ -90,7 +93,6 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 	 * @return 布局layout的id
 	 */
 	abstract fun initContentView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): Int
-	open fun initToolbar() {}
 
 	/**
 	 * 初始化ViewModel的id
@@ -112,7 +114,9 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 
 	//刷新布局数据
 	fun refreshLayout() {
-		binding.setVariable(viewModelId, viewModel)
+		if(viewModelId > 0){
+			binding.setVariable(viewModelId, viewModel)
+		}
 	}
 
 	override fun initViewObservable() {}
@@ -122,4 +126,12 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 			binding.unbind()
 		}
 	}
+
+	override fun showContent() {}
+
+	override fun showEmpty(message: String?) {}
+
+	override fun showFailure(message: String?) {}
+
+	override fun showLoading() {}
 }

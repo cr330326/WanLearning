@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference
  * @author vsh9p8q
  * @DATE 2021/9/13
  ***/
-abstract class BaseActivity : AppCompatActivity(){
+abstract class BaseActivity : AppCompatActivity() {
 
 	/**
 	 * 判断当前Activity是否在前台。

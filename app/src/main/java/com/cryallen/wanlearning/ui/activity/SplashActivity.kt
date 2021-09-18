@@ -26,7 +26,7 @@ class SplashActivity : BaseActivity() {
 	private val binding: ActivitySplashBinding
 		get() = _binding!!
 
-	private val splashDuration = 3 * 1000L
+	private val splashDuration = 1 * 1000L
 
 	private val alphaAnimation by lazy {
 		AlphaAnimation(0.5f, 1.0f).apply {

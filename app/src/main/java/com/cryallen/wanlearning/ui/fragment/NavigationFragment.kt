@@ -5,22 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cryallen.wanlearning.base.BaseFragment
-import com.cryallen.wanlearning.databinding.FragmentHomeBinding
+import com.cryallen.wanlearning.databinding.FragmentNavigationBinding
 
 /***
- * 首页Fragment
+ * 导航Fragment
  * @author vsh9p8q
  * @DATE 2021/9/17
  ***/
-class HomeFragment : BaseFragment(){
+class NavigationFragment : BaseFragment() {
 
-	private var _binding: FragmentHomeBinding? = null
+	private var _binding: FragmentNavigationBinding? = null
 
 	private val binding
 		get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-		_binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+		_binding = FragmentNavigationBinding.inflate(layoutInflater, container, false)
 		return super.onCreateView(binding.root)
 	}
 
@@ -31,6 +31,6 @@ class HomeFragment : BaseFragment(){
 
 	companion object {
 
-		fun newInstance() = HomeFragment()
+		fun newInstance() = NavigationFragment()
 	}
 }
