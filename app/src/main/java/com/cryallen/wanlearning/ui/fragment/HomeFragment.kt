@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
+import com.cryallen.wanlearning.utils.GlobalUtil
 
 /***
  * 首页Fragment
@@ -24,9 +25,18 @@ class HomeFragment : BaseFragment(){
 		return super.onCreateView(binding.root)
 	}
 
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		setupViews()
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	fun setupViews(){
+		binding.viewHorizontalLine.setBackgroundColor(GlobalUtil.getThemeColor())
 	}
 
 	companion object {

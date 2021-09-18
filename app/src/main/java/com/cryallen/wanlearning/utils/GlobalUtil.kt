@@ -230,7 +230,7 @@ object GlobalUtil {
      * 获取当前主题颜色
      */
     fun getThemeColor(): Int {
-        val defaultColor = getColor(R.color.colorAccent)
+        val defaultColor = getColor(R.color.colorPrimary)
         val color = XKeyValue.get("color", defaultColor)
         return if (color != 0 && Color.alpha(color) != 255) {
             defaultColor

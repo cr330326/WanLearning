@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <include layout="@layout/include_toolbar" />
+
+    <View
+        android:id="@+id/viewHorizontalLine"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/qb_px_28" />
+        android:layout_height="1px" />
+
+    <include layout="@layout/include_refresh_layout" />
 
 </LinearLayout>

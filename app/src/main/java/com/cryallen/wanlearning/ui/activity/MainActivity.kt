@@ -70,7 +70,7 @@ class MainActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
-		//observe()
+		//initViewObservable()
 		binding.bottomLine.setBackgroundColor(GlobalUtil.getThemeColor())
 		setOnClickListener(
 			binding.navigationBar.btnMenuHome, binding.navigationBar.btnMenuWechat, binding.navigationBar.btnMenuProject, binding.navigationBar.btnMenuNavi,

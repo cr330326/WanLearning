@@ -10,4 +10,9 @@
     <string name="menu_bottom_project">项目</string>
     <string name="menu_bottom_nav">导航</string>
     <string name="menu_bottom_me">我的</string>
+
+    <string name="common_load_empty">当前没有数据。</string>
+    <string name="common_load_error">系统异常，请稍后。</string>
+    <string name="common_load_refresh">请重试</string>
+
 </resources>
