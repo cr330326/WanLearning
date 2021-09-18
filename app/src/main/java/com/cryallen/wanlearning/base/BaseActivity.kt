@@ -8,6 +8,7 @@ import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.utils.ActivityCollector
+import com.cryallen.wanlearning.utils.GlobalUtil
 import com.cryallen.wanlearning.utils.LogUtils
 import com.gyf.immersionbar.ImmersionBar
 import java.lang.ref.WeakReference
@@ -99,23 +100,23 @@ abstract class BaseActivity : AppCompatActivity() {
 
 	override fun setContentView(layoutResID: Int) {
 		super.setContentView(layoutResID)
-		setStatusBarBackground(R.color.colorPrimaryDark)
+		setStatusBarBackground()
 		setupViews()
 	}
 
 	override fun setContentView(layoutView: View) {
 		super.setContentView(layoutView)
-		setStatusBarBackground(R.color.colorPrimaryDark)
+		setStatusBarBackground()
 		setupViews()
 	}
 
 	/**
 	 * 设置状态栏背景色
 	 */
-	protected open fun setStatusBarBackground(@ColorRes statusBarColor: Int) {
+	protected open fun setStatusBarBackground() {
 		ImmersionBar.with(this)
 			.autoStatusBarDarkModeEnable(true, 0.2f)
-			.statusBarColor(statusBarColor)
+			.statusBarColorInt(GlobalUtil.getThemeColor())
 			.fitsSystemWindows(true)
 			.init()
 	}

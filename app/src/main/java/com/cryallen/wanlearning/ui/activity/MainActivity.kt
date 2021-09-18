@@ -2,6 +2,7 @@ package com.cryallen.wanlearning.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -10,6 +11,7 @@ import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.databinding.ActivityMainBinding
 import com.cryallen.wanlearning.extension.setOnClickListener
 import com.cryallen.wanlearning.extension.showToast
+import com.cryallen.wanlearning.ui.ext.setIconTint
 import com.cryallen.wanlearning.ui.fragment.*
 import com.cryallen.wanlearning.utils.GlobalUtil
 
@@ -69,6 +71,7 @@ class MainActivity : BaseActivity() {
 
 	override fun setupViews() {
 		//observe()
+		binding.bottomLine.setBackgroundColor(GlobalUtil.getThemeColor())
 		setOnClickListener(
 			binding.navigationBar.btnMenuHome, binding.navigationBar.btnMenuWechat, binding.navigationBar.btnMenuProject, binding.navigationBar.btnMenuNavi,
 			binding.navigationBar.btnMenuMine
@@ -99,13 +102,13 @@ class MainActivity : BaseActivity() {
 	}
 
 	private fun setTabSelection(index: Int) {
-		//clearAllSelected()
+		clearAllSelected()
 		fragmentManager.beginTransaction().apply {
 			hideFragments(this)
 			when (index) {
 				0 -> {
-					//binding.navigationBar.ivHomePage.isSelected = true
-					//binding.navigationBar.tvHomePage.isSelected = true
+					binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuHome.setTextColor(GlobalUtil.getThemeColor())
 					if (homeFragment == null) {
 						homeFragment = HomeFragment.newInstance()
 						add(binding.mainContainer.id, homeFragment!!)
@@ -114,8 +117,8 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				1 -> {
-					//binding.navigationBar.ivCommunity.isSelected = true
-					//binding.navigationBar.tvCommunity.isSelected = true
+					binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtil.getThemeColor())
 					if (wechatFragment == null) {
 						wechatFragment = WechatFragment.newInstance()
 						add(binding.mainContainer.id, wechatFragment!!)
@@ -124,8 +127,8 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				2 -> {
-					//binding.navigationBar.ivNotification.isSelected = true
-					//binding.navigationBar.tvNotification.isSelected = true
+					binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuProject.setTextColor(GlobalUtil.getThemeColor())
 					if (projectFragment == null) {
 						projectFragment = ProjectFragment.newInstance()
 						add(binding.mainContainer.id, projectFragment!!)
@@ -134,8 +137,8 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				3 -> {
-					//binding.navigationBar.ivMine.isSelected = true
-					//binding.navigationBar.tvMine.isSelected = true
+					binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtil.getThemeColor())
 					if (naviFragment == null) {
 						naviFragment = NavigationFragment.newInstance()
 						add(binding.mainContainer.id, naviFragment!!)
@@ -144,8 +147,8 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				4 -> {
-					//binding.navigationBar.ivMine.isSelected = true
-					//binding.navigationBar.tvMine.isSelected = true
+					binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuMine.setTextColor(GlobalUtil.getThemeColor())
 					if (mineFragment == null) {
 						mineFragment = MineFragment.newInstance()
 						add(binding.mainContainer.id, mineFragment!!)
@@ -154,8 +157,8 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				else -> {
-					//binding.navigationBar.ivHomePage.isSelected = true
-					//binding.navigationBar.tvHomePage.isSelected = true
+					binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtil.getThemeColor()))
+					binding.navigationBar.tvMenuHome.setTextColor(GlobalUtil.getThemeColor())
 					if (homeFragment == null) {
 						homeFragment = HomeFragment.newInstance()
 						add(binding.mainContainer.id, homeFragment!!)
@@ -165,6 +168,24 @@ class MainActivity : BaseActivity() {
 				}
 			}
 		}.commitAllowingStateLoss()
+	}
+
+	private fun clearAllSelected() {
+		//首页
+		binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
+		binding.navigationBar.tvMenuHome.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		//公众号
+		binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
+		binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		//项目
+		binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
+		binding.navigationBar.tvMenuProject.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		//导航
+		binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
+		binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtil.getColor(R.color.color_333333))
+		//我的
+		binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtil.getColor(R.color.color_333333)))
+		binding.navigationBar.tvMenuMine.setTextColor(GlobalUtil.getColor(R.color.color_333333))
 	}
 
 	private fun hideFragments(transaction: FragmentTransaction) {

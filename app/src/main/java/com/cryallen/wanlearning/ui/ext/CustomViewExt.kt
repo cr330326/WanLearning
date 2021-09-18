@@ -1,5 +1,9 @@
 package com.cryallen.wanlearning.ui.ext
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
+import android.widget.ImageView
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -10,7 +14,6 @@ import com.cryallen.wanlearning.ui.fragment.*
  * @author vsh9p8q
  * @DATE 2021/9/17
  ***/
-
 fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
 	//是否可滑动
 	this.isUserInputEnabled = false
@@ -42,4 +45,16 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
 		override fun getItemCount() = 5
 	}
 	return this
+}
+
+fun ImageView.setIconTint(iconTint: ColorStateList? = null) {
+	var iconDrawable = drawable
+	if (iconDrawable != null) {
+		iconDrawable = DrawableCompat.wrap(iconDrawable.constantState ?.newDrawable() ?: iconDrawable).mutate()
+		if (iconTint != null) {
+			DrawableCompat.setTintList(iconDrawable, iconTint)
+			iconDrawable.invalidateSelf()
+		}
+	}
+	setImageDrawable(iconDrawable)
 }

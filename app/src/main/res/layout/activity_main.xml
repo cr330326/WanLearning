@@ -6,22 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.activity.MainActivity">
 
     <FrameLayout
-        android:id="@+id/mainContainer"
+        android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/white" />
+        android:layout_weight="1" />
 
     <View
+        android:id="@+id/bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorPrimary" />
+        android:layout_height="1px" />
 
     <include
-        android:id="@+id/navigationBar"
+        android:id="@+id/navigation_bar"
         layout="@layout/layout_bottom_navigation_bar" />
 
 </LinearLayout>

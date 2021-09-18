@@ -65,7 +65,7 @@ class SplashActivity : BaseActivity() {
 		isFirstEntryApp = false
 	}
 
-	override fun setStatusBarBackground(statusBarColor: Int) {}
+	override fun setStatusBarBackground() {}
 
 	companion object {
 

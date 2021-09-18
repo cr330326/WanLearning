@@ -1,30 +1,17 @@
-/*
- * Copyright (C) guolin, Suzhou Quxiang Inc. Open source codes for study only.
- * Do not use for commercial purpose.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.cryallen.wanlearning.utils
 
 import android.annotation.SuppressLint
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import androidx.core.content.ContextCompat
+import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.WanApplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,9 +20,8 @@ import java.util.*
 
 /**
  * 应用程序全局的通用工具类，功能比较单一，经常被复用的功能，应该封装到此工具类当中，从而给全局代码提供方面的操作。
- *
- * @author guolin
- * @since 17/2/18
+ * @author vsh9p8q
+ * @DATE 2021/9/14
  */
 object GlobalUtil {
 
@@ -160,6 +146,17 @@ object GlobalUtil {
     }
 
     /**
+     * 获取资源文件中定义的颜色
+     *
+     * @param resId
+     * 字符串资源id
+     * @return 字符串资源id对应的字符串内容。
+     */
+    fun getColor(resId: Int): Int {
+        return ContextCompat.getColor(WanApplication.instance, resId)
+    }
+
+    /**
      * 获取指定资源名的资源id。
      *
      * @param name
@@ -227,4 +224,25 @@ object GlobalUtil {
      * 判断手机是否安装了微博。
      * */
     fun isWeiboInstalled() = isInstalled("com.sina.weibo")
+
+
+    /**
+     * 获取当前主题颜色
+     */
+    fun getThemeColor(): Int {
+        val defaultColor = getColor(R.color.colorAccent)
+        val color = XKeyValue.get("color", defaultColor)
+        return if (color != 0 && Color.alpha(color) != 255) {
+            defaultColor
+        } else {
+            color
+        }
+    }
+
+    /**
+     * 设置主题颜色
+     */
+    fun setThemeColor(color: Int) {
+        XKeyValue.put("color", color)
+    }
 }
