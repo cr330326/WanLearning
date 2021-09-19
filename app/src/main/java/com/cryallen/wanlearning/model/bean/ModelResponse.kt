@@ -36,8 +36,8 @@ class ModelResponse {
 		var visible: Int,
 		var zan: Int,
 		var tags: List<Tag>,
-		var isTop: Boolean,
-		var bannerData: List<Banner>
+		var shareUser: String,
+		var prefix: String
 	)
 
 	data class Tag(

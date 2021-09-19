@@ -11,6 +11,10 @@ class RemoteRequest {
 
 	val wanService = ServiceCreator.create(WanService::class.java)
 
+	suspend fun getArticles(pageNo: Int) = wanService.getArticles(pageNo)
+
+	suspend fun getTopArticles() = wanService.getTopArticles()
+
 	companion object {
 
 		//单例模式 线程安全

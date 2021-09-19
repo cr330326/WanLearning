@@ -3,11 +3,13 @@ package com.cryallen.wanlearning.ui.ext
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.cryallen.wanlearning.ui.fragment.*
+import com.cryallen.wanlearning.utils.GlobalUtil
 
 /***
  * 自定义View 扩展文件
@@ -44,6 +46,16 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
 		}
 		override fun getItemCount() = 5
 	}
+	return this
+}
+
+
+/**
+ * 初始化普通的toolbar 只设置标题
+ */
+fun Toolbar.init(titleStr: String = ""): Toolbar {
+	setBackgroundColor(GlobalUtil.getThemeColor())
+	title = titleStr
 	return this
 }
 

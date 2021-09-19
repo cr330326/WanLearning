@@ -3,6 +3,7 @@ package com.cryallen.wanlearning.base
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import com.cryallen.wanlearning.bus.event.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -13,6 +14,9 @@ import io.reactivex.disposables.Disposable
  * @DATE 2021/9/13
  ***/
 abstract class BaseViewModel : ViewModel(), IBaseViewModel {
+	//感知loading变化
+	val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
+
 	//管理RxJava，主要针对RxJava异步操作造成的内存泄漏
 	private var mCompositeDisposable: CompositeDisposable?
 
@@ -40,6 +44,18 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel {
 
 	init {
 		mCompositeDisposable = CompositeDisposable()
+	}
+
+	/**
+	 * 内置封装好的可通知Activity/fragment 显示隐藏加载框
+	 */
+	inner class UiLoadingChange {
+
+		//显示加载框
+		val showLoading by lazy { SingleLiveEvent<String>() }
+
+		//隐藏
+		val dismissLoading by lazy { SingleLiveEvent<Boolean>() }
 	}
 
 }
