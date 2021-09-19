@@ -10,5 +10,4 @@ class EmptyCallback : Callback() {
     override fun onCreateView(): Int {
         return R.layout.layout_empty
     }
-
 }

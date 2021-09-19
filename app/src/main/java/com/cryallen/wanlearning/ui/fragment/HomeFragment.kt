@@ -9,8 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
-import com.cryallen.wanlearning.ui.ext.init
+import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
+import com.cryallen.wanlearning.exception.ExceptionHandle
+import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.HomeViewModel
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
 
@@ -23,19 +26,16 @@ class HomeFragment : BaseFragment(){
 
 	private var _binding: FragmentHomeBinding? = null
 
-	private val binding
-		get() = _binding!!
+	private var refreshLayoutBinding: IncludeRefreshLayoutBinding? = null
+
+	private val binding get() = _binding!!
 
 	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getHomeViewModelFactory()).get(HomeViewModel::class.java) }
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		_binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+		refreshLayoutBinding = IncludeRefreshLayoutBinding.bind(binding.root)
 		return super.onCreateView(binding.root)
-	}
-
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		super.onViewCreated(view, savedInstanceState)
-		setupViews()
 	}
 
 	override fun onDestroyView() {
@@ -43,7 +43,7 @@ class HomeFragment : BaseFragment(){
 		_binding = null
 	}
 
-	private fun setupViews(){
+	override fun initView(savedInstanceState: Bundle?){
 		//初始化 toolbar
 		binding.homeToolbar.toolbar.run {
 			init(GlobalUtil.getString(R.string.menu_bottom_home))
@@ -57,23 +57,36 @@ class HomeFragment : BaseFragment(){
 				true
 			}
 		}
-
+		//初始化横线
 		binding.viewHorizontalLine.setBackgroundColor(GlobalUtil.getThemeColor())
-		initViewObservable()
+		//设置加载框附着点
+		setLoadSir(refreshLayoutBinding!!.refreshLayout) {
+			//点击重试时触发的操作
+			LogUtils.d(TAG,"点击重试")
+			loadDataOnce()
+			//mViewModel.getCollectAriticleData(true)
+		}
 	}
 
 	//页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
-	private fun initViewObservable(){
+	override fun createObserver(){
+		//监听文章列表数据
 		if (!viewModel.articleLiveData.hasObservers()) {
 			viewModel.articleLiveData.observe(viewLifecycleOwner, Observer { result ->
+				loadService.showSuccess()
 				val response = result.getOrNull()
-				if (response == null) {
-					//ResponseHandler.getFailureTips(result.exceptionOrNull()).showToast()
+				if (response == null || !response.isSucces()) {
+					//显示异常信息页面
+					loadService.showError(ExceptionHandle.handleException(result.exceptionOrNull()).errorMsg)
 					return@Observer
 				}
+
 				if (response.data.datas.isNullOrEmpty()) {
+					//显示空数据页面
+					loadService.showEmpty()
 					return@Observer
 				}
+
 				viewModel.articleDataList.addAll(response.data.datas)
 				/*val itemCount = replyAdapter.itemCount
 				replyAdapter.notifyItemRangeInserted(itemCount, response.itemList.size)
@@ -84,6 +97,11 @@ class HomeFragment : BaseFragment(){
 				}*/
 			})
 		}
+	}
+
+	override fun loadDataOnce() {
+		loadService.showLoading()
+		viewModel.onRefresh()
 	}
 
 	companion object {

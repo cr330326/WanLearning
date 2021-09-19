@@ -9,7 +9,7 @@ package com.cryallen.wanlearning.model.bean
  * @author vsh9p8q
  * @DATE 2021/9/15
  */
-data class ApiResponse<T>(val errorCode: Int, val errorMsg: String, val data: T) : BaseResponse<T>() {
+data class ApiResponse<T>(val errorCode : Int = -1, val errorMsg: String, val data: T) : BaseResponse<T>() {
 
     // 这里是示例，wanandroid 网站返回的 错误码为 0 就代表请求成功，请你根据自己的业务需求来改变
     override fun isSucces() = errorCode == 0

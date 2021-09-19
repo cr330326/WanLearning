@@ -54,7 +54,6 @@ class SplashActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
-		super.setupViews()
 		binding.ivSlogan.startAnimation(alphaAnimation)
 		binding.ivSplashPicture.startAnimation(scaleAnimation)
 		lifecycleScope.launch {

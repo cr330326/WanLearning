@@ -8,7 +8,6 @@ import com.cryallen.wanlearning.ui.view.loadCallBack.LoadingCallback
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.utils.LoggerUtils
 import com.cryallen.wanlearning.utils.XKeyValue
-import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
@@ -20,11 +19,6 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 class WanApplication : Application() {
 
 	init {
-		//匿名函数写法
-		/*SmartRefreshLayout.setDefaultRefreshInitializer(fun (context:Context,refreshLayout: RefreshLayout) : Unit {
-			refreshLayout.setEnableLoadMore(true)
-			refreshLayout.setEnableLoadMoreWhenContentNotFull(true)
-		});*/
 		//默认打开日志开关
 		LogUtils.setDebuggable(true)
 		LogUtils.setTagName("WanApp_Logger")
@@ -49,10 +43,9 @@ class WanApplication : Application() {
 
 		//界面加载管理 初始化
 		LoadSir.beginBuilder()
-			.addCallback(LoadingCallback())//加载
-			.addCallback(ErrorCallback())//错误
-			.addCallback(EmptyCallback())//空
-			.setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+			.addCallback(LoadingCallback()) //加载页面
+			.addCallback(ErrorCallback())   //错误页面
+			.addCallback(EmptyCallback())   //空页面
 			.commit()
 	}
 

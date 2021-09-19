@@ -29,6 +29,14 @@ class ProjectFragment : BaseFragment(){
 		_binding = null
 	}
 
+	override fun initView(savedInstanceState: Bundle?) {
+
+	}
+
+	override fun createObserver() {
+
+	}
+
 	companion object {
 
 		fun newInstance() = ProjectFragment()

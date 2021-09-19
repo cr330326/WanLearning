@@ -18,9 +18,10 @@
     <string name="menu_bottom_me">我的</string>
     <string name="menu_top_search">搜索</string>
 
+    <string name="common_load_loading">正在加载中...</string>
     <string name="common_load_empty">当前没有数据。</string>
     <string name="common_load_error">系统异常，请稍后。</string>
-    <string name="common_load_refresh">请重试</string>
+    <string name="common_load_retry">请点击我重试</string>
 
     <string name="item_on_top">置顶</string>
     <string name="item_fresh">新</string>

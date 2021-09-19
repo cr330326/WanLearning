@@ -4,11 +4,25 @@
     android:clickable="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:gravity="center">
 
     <ProgressBar
         android:id="@+id/loading_progress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"/>
+
+    <TextView
+        android:id="@+id/loading_progress_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/qb_px_10"
+        android:text="@string/common_load_loading"
+        android:layout_marginTop="@dimen/qb_px_20"
+        android:layout_marginBottom="@dimen/qb_px_20"
+        android:textColor="@color/color_666666"
+        android:textSize="@dimen/sb_px_26" />
 
 </LinearLayout>

@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.cryallen.wanlearning.ui.ext.loadServiceInit
 import com.cryallen.wanlearning.utils.LogUtils
+import com.kingja.loadsir.core.LoadService
 
 /***
  * 应用程序中所有Fragment的基类。
@@ -15,6 +17,8 @@ import com.cryallen.wanlearning.utils.LogUtils
  * @DATE 2021/9/13
  ***/
 abstract class BaseFragment : Fragment() {
+
+	protected lateinit var loadService: LoadService<Any>
 
 	/**
 	 * 是否已经加载过数据
@@ -56,6 +60,8 @@ abstract class BaseFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		LogUtils.d(TAG, "BaseFragment-->onViewCreated()")
+		initView(savedInstanceState)
+		createObserver()
 	}
 
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -115,6 +121,23 @@ abstract class BaseFragment : Fragment() {
 		rootView = view
 		return view
 	}
+
+	/**
+	 * 设置加载加载框
+	 */
+	open fun setLoadSir(parentView: View,callback: () -> Unit) {
+		loadService = loadServiceInit(parentView,callback)
+	}
+
+	/**
+	 * 初始化view
+	 */
+	abstract fun initView(savedInstanceState: Bundle?)
+
+	/**
+	 * 创建LiveData观察者 Fragment执行onViewCreated后触发
+	 */
+	abstract fun createObserver()
 
 	/**
 	 * 页面首次可见时调用一次该方法，在这里可以请求网络数据等。
