@@ -11,7 +11,6 @@ import com.cryallen.wanlearning.model.bean.ApiPagerResponse
 import com.cryallen.wanlearning.model.bean.ApiResponse
 import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.repository.RemoteRepository
-import com.cryallen.wanlearning.utils.LogUtils
 import kotlinx.coroutines.flow.Flow
 
 /***
@@ -21,6 +20,10 @@ import kotlinx.coroutines.flow.Flow
  ***/
 class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() {
 
+	//页码 首页数据页码从0开始
+	var pageNo = 0
+
+	//首页文章列表数据
 	var articleDataList = ArrayList<ModelResponse.Article>()
 
 	private var articleLiveEvent = SingleLiveEvent<Int>()
@@ -34,7 +37,6 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 	val articleLiveData = Transformations.switchMap(articleLiveEvent) {
 		liveData {
 			val result = try {
-				LogUtils.d("start request")
 				val articleList = repository.getHomeData(it!!)
 				Result.success(articleList)
 			} catch (e: Exception) {
@@ -44,7 +46,11 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 		}
 	}
 
-	fun onRefresh() {
-		articleLiveEvent.value = 0
+	fun onRefresh(isRefresh: Boolean) {
+		if(isRefresh){
+			pageNo = 0
+		}
+		articleLiveEvent.value = pageNo
 	}
+
 }

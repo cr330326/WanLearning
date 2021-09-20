@@ -17,7 +17,7 @@ interface WanService {
 	/**
 	 * 首页文章列表
 	 */
-	@GET("article/list/{pageNo}/json")
+	@GET("article/list/{pageNo}/json?page_size=20")
 	suspend fun getArticles(@Path("pageNo") pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
 
 	/**

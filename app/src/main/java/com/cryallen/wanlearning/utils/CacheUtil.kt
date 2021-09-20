@@ -53,7 +53,7 @@ object CacheUtil {
      * 首页是否开启获取指定文章
      */
     fun isNeedTop(): Boolean {
-        return XKeyValue.get("top", true)
+        return XKeyValue.get("top", false)
     }
     /**
      * 设置首页是否开启获取指定文章

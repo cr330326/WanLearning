@@ -147,7 +147,9 @@ dependencies {
 
     // 下拉刷新
     implementation("com.scwang.smart:refresh-layout-kernel:${versions.smartrefresh}")
-    implementation("com.scwang.smart:refresh-header-classics:${versions.smartrefresh}")
+    //谷歌刷新头
+    implementation("com.scwang.smart:refresh-header-material:${versions.smartrefresh}")
+    //经典加载
     implementation("com.scwang.smart:refresh-footer-classics:${versions.smartrefresh}")
 
     // 加载动画

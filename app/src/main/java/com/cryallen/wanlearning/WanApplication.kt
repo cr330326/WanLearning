@@ -9,6 +9,8 @@ import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.utils.LoggerUtils
 import com.cryallen.wanlearning.utils.XKeyValue
 import com.kingja.loadsir.core.LoadSir
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
 /***
@@ -24,10 +26,27 @@ class WanApplication : Application() {
 		LogUtils.setTagName("WanApp_Logger")
 		LoggerUtils.init(true)
 
-		//Lambda表达式写法
-		SmartRefreshLayout.setDefaultRefreshInitializer{ context, layout ->
-			layout.setEnableLoadMore(true)
+		//设置默认 Refresh 初始化
+		SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
+			layout.setDragRate(0.7f)
 			layout.setEnableLoadMoreWhenContentNotFull(true)
+			layout.setEnableScrollContentWhenLoaded(true)
+			layout.setEnableOverScrollBounce(true)
+		}
+
+		//设置全局的Header构建器
+		SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+			layout.setEnableHeaderTranslationContent(true)
+			layout.setHeaderTriggerRate(0.6f)
+			MaterialHeader(context).setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimary, R.color.colorPrimary)
+		}
+
+		//设置全局的Footer构建器
+		SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
+			layout.setFooterTriggerRate(0.6f)
+			layout.setEnableFooterFollowWhenNoMoreData(true)
+			layout.setEnableFooterTranslationContent(true)
+			ClassicsFooter(context)
 		}
 	}
 

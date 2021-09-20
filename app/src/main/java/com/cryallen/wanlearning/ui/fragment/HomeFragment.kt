@@ -12,7 +12,6 @@ import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
-import com.cryallen.wanlearning.extension.dp2px
 import com.cryallen.wanlearning.ui.adapter.ArticleAdapter
 import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.utils.GlobalUtil
@@ -31,6 +30,8 @@ class HomeFragment : BaseFragment(){
 	private var _binding: FragmentHomeBinding? = null
 
 	private lateinit var refreshLayoutBinding: IncludeRefreshLayoutBinding
+
+	private var isNoLoadMore : Boolean = false
 
 	private val binding get() = _binding!!
 
@@ -74,12 +75,27 @@ class HomeFragment : BaseFragment(){
 			//it.initFloatBtn(floatbtn)
 		}
 
+		//构建refreshLayout
+		refreshLayoutBinding.refreshLayout.run {
+			setOnRefreshListener {
+				finishRefresh()
+				viewModel.onRefresh(true)
+			}
+			setOnLoadMoreListener {
+				if(!isNoLoadMore){
+					finishLoadMore()
+					viewModel.onRefresh(false)
+				}else{
+					finishLoadMoreWithNoMoreData()
+				}
+			}
+		}
+
 		//设置加载框附着点
 		setLoadSir(refreshLayoutBinding.refreshLayout) {
 			//点击重试时触发的操作
 			LogUtils.d(TAG,"点击重试")
 			loadDataOnce()
-			//mViewModel.getCollectAriticleData(true)
 		}
 	}
 
@@ -102,23 +118,30 @@ class HomeFragment : BaseFragment(){
 					return@Observer
 				}
 
-				viewModel.articleDataList.clear()
+				when(viewModel.pageNo) {
+					0 -> {
+						isNoLoadMore = false
+						viewModel.articleDataList.clear()
+						viewModel.pageNo++
+					}
+					response.data.pageCount -> {
+						//关闭加载完成
+						isNoLoadMore = true
+						refreshLayoutBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+					}
+					else -> {
+						viewModel.pageNo++
+					}
+				}
 				viewModel.articleDataList.addAll(response.data.datas)
-				val itemCount = articleAdapter.itemCount
 				articleAdapter.notifyDataSetChanged()
-				//articleAdapter.notifyItemRangeInserted(itemCount, response.data.datas.size)
-				/*if (response.nextPageUrl.isNullOrEmpty()) {
-					binding.refreshLayout.finishLoadMoreWithNoMoreData()
-				} else {
-					binding.refreshLayout.closeHeaderOrFooter()
-				}*/
 			})
 		}
 	}
 
 	override fun loadDataOnce() {
 		loadService.showLoading()
-		viewModel.onRefresh()
+		viewModel.onRefresh(true)
 	}
 
 	companion object {
