@@ -45,8 +45,6 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 	}
 
 	fun onRefresh() {
-		articleLiveEvent.value = 1
+		articleLiveEvent.value = 0
 	}
-
-	inner class RequestParam(val pageNo : Int)
 }

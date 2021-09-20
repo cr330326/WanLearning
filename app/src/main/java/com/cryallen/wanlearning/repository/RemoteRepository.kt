@@ -7,6 +7,7 @@ import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.data.remote.RemoteRequest
 import com.cryallen.wanlearning.paging.HomePagingSource
+import com.cryallen.wanlearning.utils.CacheUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -42,8 +43,10 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 		coroutineScope {
 			//同时异步请求2个接口，请求完成后合并数据
 			val articleData = async { remoteRequest.getArticles(pageNo) }
-			val articleTopData = async { remoteRequest.getTopArticles() }
-			articleData.await().data.datas.addAll(0, articleTopData.await().data)
+			if (CacheUtil.isNeedTop() && pageNo == 0) {
+				val articleTopData = async { remoteRequest.getTopArticles() }
+				articleData.await().data.datas.addAll(0, articleTopData.await().data)
+			} 
 			articleData.await()
 		}
 	}

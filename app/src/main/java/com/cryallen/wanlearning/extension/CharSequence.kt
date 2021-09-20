@@ -3,6 +3,8 @@
  */
 package com.cryallen.wanlearning.extension
 
+import android.text.Html
+import android.text.Spanned
 import android.widget.Toast
 import com.cryallen.wanlearning.WanApplication
 
@@ -13,4 +15,12 @@ import com.cryallen.wanlearning.WanApplication
  */
 fun CharSequence.showToast(duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(WanApplication.instance, this, duration).show()
+}
+
+fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
+    return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        Html.fromHtml(this, flag)
+    } else {
+        Html.fromHtml(this)
+    }
 }

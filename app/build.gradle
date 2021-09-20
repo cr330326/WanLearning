@@ -83,7 +83,6 @@ dependencies {
     // Android官方库
     implementation("androidx.appcompat:appcompat:${versions.androidx_appcompat}")
     implementation("androidx.core:core-ktx:${versions.androidx_core}")
-    implementation("androidx.recyclerview:recyclerview:${versions.androidx_recyclerview}")
     implementation("androidx.constraintlayout:constraintlayout:${versions.androidx_constraintlayout}")
     implementation("androidx.annotation:annotation:${versions.androidx_annotation}")
     implementation("com.google.android.material:material:${versions.android_material}")
@@ -94,6 +93,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx_lifecycle}")
     implementation("androidx.activity:activity-ktx:${versions.androidx_activity_ktx}")
     implementation("androidx.fragment:fragment-ktx:${versions.androidx_fragment_ktx}")
+    implementation("androidx.recyclerview:recyclerview:${versions.androidx_recyclerview}")
     implementation("androidx.room:room-runtime:${versions.androidx_room}")
     implementation("androidx.room:room-rxjava2:${versions.androidx_room}")
     implementation("androidx.room:room-ktx:${versions.androidx_room}")
@@ -130,14 +130,8 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxjava:${versions.rxjava2}")
     implementation("io.reactivex.rxjava2:rxandroid:${versions.rxandroid2}")
 
-    // 微信分享SDK
-    //implementation("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechat_sdk}")
-
-    // Gif
-    //implementation("pl.droidsonroids.gif:android-gif-drawable:${versions.gif}")
-
-    // Lottie
-    //implementation("com.airbnb.android:lottie:${versions.lottie}")
+    // BaseRecyclerViewAdapterHelper
+    implementation ("com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.base_recycler_view}")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:${versions.glide}")
@@ -164,4 +158,10 @@ dependencies {
 
     // loadsir
     implementation ("com.kingja.loadsir:loadsir:${versions.loadsir}")
+
+    // 微信分享SDK
+    //implementation("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechat_sdk}")
+
+    // Lottie
+    //implementation("com.airbnb.android:lottie:${versions.lottie}")
 }

@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
+import com.cryallen.wanlearning.extension.dp2px
+import com.cryallen.wanlearning.ui.adapter.ArticleAdapter
 import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.utils.GlobalUtil
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.HomeViewModel
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
+import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 
 /***
  * 首页Fragment
@@ -26,11 +30,13 @@ class HomeFragment : BaseFragment(){
 
 	private var _binding: FragmentHomeBinding? = null
 
-	private var refreshLayoutBinding: IncludeRefreshLayoutBinding? = null
+	private lateinit var refreshLayoutBinding: IncludeRefreshLayoutBinding
 
 	private val binding get() = _binding!!
 
 	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getHomeViewModelFactory()).get(HomeViewModel::class.java) }
+
+	private val articleAdapter: ArticleAdapter by lazy { ArticleAdapter(viewModel.articleDataList) }
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		_binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
@@ -59,8 +65,17 @@ class HomeFragment : BaseFragment(){
 		}
 		//初始化横线
 		binding.viewHorizontalLine.setBackgroundColor(GlobalUtil.getThemeColor())
+
+		//初始化recyclerView
+		refreshLayoutBinding.recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
+			//因为首页要添加轮播图，所以我设置了firstNeedTop字段为false,即第一条数据不需要设置间距
+			it.addItemDecoration(SpaceItemDecoration(0, 0, false))
+			//初始化FloatingActionButton
+			//it.initFloatBtn(floatbtn)
+		}
+
 		//设置加载框附着点
-		setLoadSir(refreshLayoutBinding!!.refreshLayout) {
+		setLoadSir(refreshLayoutBinding.refreshLayout) {
 			//点击重试时触发的操作
 			LogUtils.d(TAG,"点击重试")
 			loadDataOnce()
@@ -87,10 +102,12 @@ class HomeFragment : BaseFragment(){
 					return@Observer
 				}
 
+				viewModel.articleDataList.clear()
 				viewModel.articleDataList.addAll(response.data.datas)
-				/*val itemCount = replyAdapter.itemCount
-				replyAdapter.notifyItemRangeInserted(itemCount, response.itemList.size)
-				if (response.nextPageUrl.isNullOrEmpty()) {
+				val itemCount = articleAdapter.itemCount
+				articleAdapter.notifyDataSetChanged()
+				//articleAdapter.notifyItemRangeInserted(itemCount, response.data.datas.size)
+				/*if (response.nextPageUrl.isNullOrEmpty()) {
 					binding.refreshLayout.finishLoadMoreWithNoMoreData()
 				} else {
 					binding.refreshLayout.closeHeaderOrFooter()

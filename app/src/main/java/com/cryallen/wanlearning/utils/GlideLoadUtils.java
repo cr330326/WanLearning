@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.cryallen.wanlearning.R;
@@ -118,6 +121,18 @@ public class GlideLoadUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void loadImageFromUrl(ImageView imageView, String url) {
+        RequestOptions options = RequestOptions
+                .bitmapTransform(new RoundedCorners(2))
+                .placeholder(R.drawable.bg_placeholder)
+                .error(R.drawable.ic_image_error);
+
+        Glide.with(imageView.getContext())
+                .load(url)
+                .apply(options)
+                .into(imageView);
     }
 
 

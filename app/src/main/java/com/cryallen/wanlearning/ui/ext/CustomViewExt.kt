@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.cryallen.wanlearning.R
@@ -125,6 +126,9 @@ fun setLoadingColor(loadService: LoadService<Any>) {
 	}
 }
 
+/**
+ * loadService初始化
+ */
 fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
 	val loadService = LoadSir.getDefault().register(view) {
 		//点击重试时触发的操作
@@ -132,4 +136,18 @@ fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
 	}
 	setLoadingColor(loadService)
 	return loadService
+}
+
+//绑定RecyclerView
+fun RecyclerView.init(
+	layoutManger: RecyclerView.LayoutManager,
+	bindAdapter: RecyclerView.Adapter<*>,
+	isScroll: Boolean = true
+): RecyclerView {
+	layoutManager = layoutManger
+	setHasFixedSize(true)
+	adapter = bindAdapter
+	itemAnimator = null
+	isNestedScrollingEnabled = isScroll
+	return this
 }
