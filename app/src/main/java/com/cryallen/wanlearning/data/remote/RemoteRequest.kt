@@ -15,6 +15,8 @@ class RemoteRequest {
 
 	suspend fun getTopArticles() = wanService.getTopArticles()
 
+	suspend fun getBanner() = wanService.getBanner()
+
 	companion object {
 
 		//单例模式 线程安全

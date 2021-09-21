@@ -27,7 +27,12 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	suspend fun getHomeData(pageNo: Int) = requestHomeData(pageNo)
 
 	/**
-	 * 获取首页文章数据
+	 * 获取首页Banner数据
+	 */
+	suspend fun getBannerData() = requestBannerData()
+
+	/**
+	 * 获取首页文章数据，基于Pageing3组件开发
 	 */
 	fun getHomePagingData(): Flow<PagingData<ModelResponse.Article>> {
 		return Pager(
@@ -48,6 +53,16 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 				articleData.await().data.datas.addAll(0, articleTopData.await().data)
 			} 
 			articleData.await()
+		}
+	}
+
+	/**
+	 * 获取首页Banner数据
+	 */
+	private suspend fun requestBannerData() = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val bannerData = async { remoteRequest.getBanner() }
+			bannerData.await()
 		}
 	}
 

@@ -12,9 +12,12 @@ import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
+import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.ui.adapter.ArticleAdapter
+import com.cryallen.wanlearning.ui.adapter.HomeBannerAdapter
 import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.ui.view.SpaceItemDecoration
+import com.cryallen.wanlearning.ui.view.bannerview.BannerViewPager
 import com.cryallen.wanlearning.utils.GlobalUtil
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.HomeViewModel
@@ -79,12 +82,12 @@ class HomeFragment : BaseFragment(){
 		refreshLayoutBinding.refreshLayout.run {
 			setOnRefreshListener {
 				finishRefresh()
-				viewModel.onRefresh(true)
+				viewModel.onArticleRefresh(true)
 			}
 			setOnLoadMoreListener {
 				if(!isNoLoadMore){
 					finishLoadMore()
-					viewModel.onRefresh(false)
+					viewModel.onArticleRefresh(false)
 				}else{
 					finishLoadMoreWithNoMoreData()
 				}
@@ -137,11 +140,43 @@ class HomeFragment : BaseFragment(){
 				articleAdapter.notifyDataSetChanged()
 			})
 		}
+
+		//监听轮播图数据
+		if (!viewModel.bannerLiveData.hasObservers()) {
+			viewModel.bannerLiveData.observe(viewLifecycleOwner,Observer { result ->
+				val response = result.getOrNull()
+				if (response == null || !response.isSucces()) {
+					return@Observer
+				}
+
+				if (response.data.isNullOrEmpty()) {
+					return@Observer
+				}
+				//请求轮播图数据成功，添加轮播图到headview ，如果等于0说明没有添加过头部，添加一个
+				if (articleAdapter.headerLayoutCount == 0) {
+					val headView = LayoutInflater.from(context).inflate(R.layout.include_banner, null)
+						.apply {
+							findViewById<BannerViewPager<ModelResponse.Banner>>(R.id.banner_view).apply {
+								adapter = HomeBannerAdapter()
+								setLifecycleRegistry(lifecycle)
+								/*setOnPageClickListener {
+									//nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {putParcelable("bannerdata", data[it])})
+								}*/
+								create(response.data)
+							}
+					}
+					articleAdapter.addHeaderView(headView)
+					articleAdapter.notifyDataSetChanged()
+					refreshLayoutBinding.recyclerView.scrollToPosition(0)
+				}
+			})
+		}
 	}
 
 	override fun loadDataOnce() {
 		loadService.showLoading()
-		viewModel.onRefresh(true)
+		viewModel.onBannerRefresh()
+		viewModel.onArticleRefresh(true)
 	}
 
 	companion object {

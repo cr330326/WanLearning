@@ -26,31 +26,52 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 	//首页文章列表数据
 	var articleDataList = ArrayList<ModelResponse.Article>()
 
+	//轮播图数据
+	var bannerList = ArrayList<ModelResponse.Banner>()
+
 	private var articleLiveEvent = SingleLiveEvent<Int>()
+
+	private var bannerLiveEvent = SingleLiveEvent<Any>()
 
 	//基于Paging组件获取数据源
 	fun getArticlePagingData(): Flow<PagingData<ModelResponse.Article>> {
 		return repository.getHomePagingData().cachedIn(viewModelScope)
 	}
 
-	//获取首页和置顶文章数据
+	//从Repository层获取首页和置顶文章数据
 	val articleLiveData = Transformations.switchMap(articleLiveEvent) {
 		liveData {
-			val result = try {
-				val articleList = repository.getHomeData(it!!)
-				Result.success(articleList)
+			val articleResult = try {
+				Result.success(repository.getHomeData(it!!))
 			} catch (e: Exception) {
 				Result.failure<ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>>(e)
 			}
-			emit(result)
+			emit(articleResult)
 		}
 	}
 
-	fun onRefresh(isRefresh: Boolean) {
+	//从Repository层获取轮播图数据
+	val bannerLiveData = Transformations.switchMap(bannerLiveEvent) {
+		liveData {
+			val bannerResult = try {
+				Result.success(repository.getBannerData())
+			} catch (e: Exception) {
+				Result.failure<ApiResponse<List<ModelResponse.Banner>>>(e)
+			}
+			emit(bannerResult)
+		}
+	}
+
+	//刷新首页和置顶文章数据
+	fun onArticleRefresh(isRefresh: Boolean) {
 		if(isRefresh){
 			pageNo = 0
 		}
 		articleLiveEvent.value = pageNo
 	}
 
+	//刷新轮播图数据
+	fun onBannerRefresh() {
+		bannerLiveEvent.value = bannerLiveEvent.value
+	}
 }

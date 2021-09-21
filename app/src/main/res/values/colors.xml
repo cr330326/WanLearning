@@ -9,7 +9,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Red">#f44336</color>
+    <color name="red">#f44336</color>
     <color name="green_dark">#ff669900</color>
 
     <color name="color_default">#333333</color>

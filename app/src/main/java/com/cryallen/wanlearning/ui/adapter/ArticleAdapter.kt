@@ -1,6 +1,5 @@
 package com.cryallen.wanlearning.ui.adapter
 
-import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cryallen.wanlearning.R

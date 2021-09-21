@@ -11,9 +11,9 @@
         android:layout_height="@dimen/qb_px_300"
         app:bvp_auto_play="true"
         app:bvp_can_loop="true"
-        app:bvp_indicator_checked_color="@color/colorPrimary"
+        app:bvp_indicator_checked_color="@color/red"
         app:bvp_indicator_gravity="center"
-        app:bvp_indicator_normal_color="@color/color_default"
+        app:bvp_indicator_normal_color="@color/color_666666"
         app:bvp_indicator_slide_mode="worm"
         app:bvp_indicator_style="circle"/>
 </LinearLayout>
