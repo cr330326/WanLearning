@@ -14,11 +14,11 @@ import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
 import com.cryallen.wanlearning.ui.adapter.ArticleAdapter
 import com.cryallen.wanlearning.ui.ext.*
+import com.cryallen.wanlearning.ui.view.SpaceItemDecoration
 import com.cryallen.wanlearning.utils.GlobalUtil
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.HomeViewModel
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
-import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 
 /***
  * 首页Fragment

@@ -1,4 +1,4 @@
-package me.hgj.jetpackmvvm.demo.app.weight.recyclerview
+package com.cryallen.wanlearning.ui.view
 
 import android.annotation.SuppressLint
 import android.graphics.Canvas

@@ -147,9 +147,9 @@ dependencies {
 
     // 下拉刷新
     implementation("com.scwang.smart:refresh-layout-kernel:${versions.smartrefresh}")
-    //谷歌刷新头
+    // 谷歌刷新头
     implementation("com.scwang.smart:refresh-header-material:${versions.smartrefresh}")
-    //经典加载
+    // 经典加载
     implementation("com.scwang.smart:refresh-footer-classics:${versions.smartrefresh}")
 
     // 加载动画
@@ -160,6 +160,8 @@ dependencies {
 
     // loadsir
     implementation ("com.kingja.loadsir:loadsir:${versions.loadsir}")
+
+    //implementation 'com.tencent.sonic:sdk:3.1.0'
 
     // 微信分享SDK
     //implementation("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechat_sdk}")
