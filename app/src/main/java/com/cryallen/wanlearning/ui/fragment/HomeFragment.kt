@@ -32,11 +32,11 @@ class HomeFragment : BaseFragment(){
 
 	private var _binding: FragmentHomeBinding? = null
 
+	private val binding get() = _binding!!
+
 	private lateinit var refreshLayoutBinding: IncludeRefreshLayoutBinding
 
 	private var isNoLoadMore : Boolean = false
-
-	private val binding get() = _binding!!
 
 	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getHomeViewModelFactory()).get(HomeViewModel::class.java) }
 
@@ -74,8 +74,6 @@ class HomeFragment : BaseFragment(){
 		refreshLayoutBinding.recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
 			//因为首页要添加轮播图，所以我设置了firstNeedTop字段为false,即第一条数据不需要设置间距
 			it.addItemDecoration(SpaceItemDecoration(0, 0, false))
-			//初始化FloatingActionButton
-			//it.initFloatBtn(floatbtn)
 		}
 
 		//构建refreshLayout

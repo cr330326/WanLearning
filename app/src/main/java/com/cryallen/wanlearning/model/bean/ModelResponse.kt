@@ -49,7 +49,7 @@ class ModelResponse {
 	 * 公众号数据类
 	 ***/
 	data class Chapter(
-		var children: List<Any>,
+		var children: List<String> = listOf(),
 		var courseId: Int,
 		var id: Int,
 		var name: String,

@@ -62,7 +62,7 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 		}
 	}
 
-	//刷新首页和置顶文章数据
+	//获取首页和置顶文章数据
 	fun onArticleRefresh(isRefresh: Boolean) {
 		if(isRefresh){
 			pageNo = 0
@@ -70,7 +70,7 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 		articleLiveEvent.value = pageNo
 	}
 
-	//刷新轮播图数据
+	//获取轮播图数据
 	fun onBannerRefresh() {
 		bannerLiveEvent.value = bannerLiveEvent.value
 	}

@@ -1,5 +1,5 @@
 
-package com.cryallen.wanlearning.ui.view
+package com.cryallen.wanlearning.ui.view.textview
 
 import android.content.Context
 import android.graphics.Typeface

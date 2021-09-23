@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.ui.view.loadCallBack
+package com.cryallen.wanlearning.ui.view.loadcallback
 
 import android.content.Context
 import android.view.View

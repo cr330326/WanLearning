@@ -1,4 +1,4 @@
-package com.cryallen.wanlearning.ui.view.loadCallBack
+package com.cryallen.wanlearning.ui.view.loadcallback
 
 
 import com.cryallen.wanlearning.R

@@ -2,9 +2,9 @@ package com.cryallen.wanlearning
 
 import android.app.Application
 import android.content.Context
-import com.cryallen.wanlearning.ui.view.loadCallBack.EmptyCallback
-import com.cryallen.wanlearning.ui.view.loadCallBack.ErrorCallback
-import com.cryallen.wanlearning.ui.view.loadCallBack.LoadingCallback
+import com.cryallen.wanlearning.ui.view.loadcallback.EmptyCallback
+import com.cryallen.wanlearning.ui.view.loadcallback.ErrorCallback
+import com.cryallen.wanlearning.ui.view.loadcallback.LoadingCallback
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.utils.LoggerUtils
 import com.cryallen.wanlearning.utils.XKeyValue

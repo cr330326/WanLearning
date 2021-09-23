@@ -36,41 +36,41 @@ interface WanService {
 	 * 公众号列表
 	 */
 	@GET("wxarticle/chapters/json")
-	suspend fun getWXChapters(): ApiResponse<List<ModelResponse.Chapter>>
+	suspend fun getWXChapters(): ApiResponse<ArrayList<ModelResponse.Chapter>>
 
 	/**
 	 * 查看某个公众号历史数据
 	 */
 	@GET("wxarticle/list/{id}/{pageNo}/json")
-	suspend fun getWXArticles(@Path("id") id: Int, @Path("pageNo") pageNo: Int): ApiResponse<ApiPagerResponse<List<ModelResponse.Article>>>
+	suspend fun getWXArticles(@Path("id") id: Int, @Path("pageNo") pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
 
 	/**
 	 * 项目类目列表
 	 */
 	@GET("project/tree/json")
-	suspend fun getProjects(): ApiResponse<List<ModelResponse.Chapter>>
+	suspend fun getProjects(): ApiResponse<ArrayList<ModelResponse.Chapter>>
 
 	/**
 	 * 项目文章列表
 	 */
 	@GET("project/list/{pageNo}/json")
-	suspend fun getProjectArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<List<ModelResponse.Article>>>
+	suspend fun getProjectArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
 
 	/**
 	 * 导航数据
 	 */
 	@GET("navi/json")
-	suspend fun getProjectArticles(): ApiResponse<List<ModelResponse.Navigation>>
+	suspend fun getProjectArticles(): ApiResponse<ArrayList<ModelResponse.Navigation>>
 
 	/**
 	 * 知识体系
 	 */
 	@GET("tree/json")
-	suspend fun getKnowledgeTree(): ApiResponse<List<ModelResponse.Chapter>>
+	suspend fun getKnowledgeTree(): ApiResponse<ArrayList<ModelResponse.Chapter>>
 
 	/**
 	 * 知识体系文章列表
 	 */
 	@GET("article/list/{pageNo}/json")
-	suspend fun getKnowledgeArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<List<ModelResponse.Article>>>
+	suspend fun getKnowledgeArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
 }

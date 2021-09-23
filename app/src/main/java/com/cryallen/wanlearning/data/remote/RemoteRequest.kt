@@ -17,6 +17,10 @@ class RemoteRequest {
 
 	suspend fun getBanner() = wanService.getBanner()
 
+	suspend fun getWXChapters() = wanService.getWXChapters()
+
+	suspend fun getWXArticles(cId: Int, pageNo: Int) = wanService.getWXArticles(cId,pageNo)
+
 	companion object {
 
 		//单例模式 线程安全

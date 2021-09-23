@@ -32,6 +32,16 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	suspend fun getBannerData() = requestBannerData()
 
 	/**
+	 * 获取公众号标题列表数据
+	 */
+	suspend fun getWxChapterData() = requestWXChapterData()
+
+	/**
+	 * 获取公众号标题列表数据
+	 */
+	suspend fun getWxArticlesData(cId: Int, pageNo: Int) = requestWXArticlesData(cId,pageNo)
+
+	/**
 	 * 获取首页文章数据，基于Pageing3组件开发
 	 */
 	fun getHomePagingData(): Flow<PagingData<ModelResponse.Article>> {
@@ -63,6 +73,26 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 		coroutineScope {
 			val bannerData = async { remoteRequest.getBanner() }
 			bannerData.await()
+		}
+	}
+
+	/**
+	 * 获取公众号标题数据
+	 */
+	private suspend fun requestWXChapterData() = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val wxChaptersData = async { remoteRequest.getWXChapters() }
+			wxChaptersData.await()
+		}
+	}
+
+	/**
+	 * 获取公众号章节数据
+	 */
+	private suspend fun requestWXArticlesData(cId: Int, pageNo: Int) = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val wxArticlesData = async { remoteRequest.getWXArticles(cId,pageNo) }
+			wxArticlesData.await()
 		}
 	}
 
