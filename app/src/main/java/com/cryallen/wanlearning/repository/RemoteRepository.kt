@@ -7,7 +7,7 @@ import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.data.remote.RemoteRequest
 import com.cryallen.wanlearning.paging.HomePagingSource
-import com.cryallen.wanlearning.utils.CacheUtil
+import com.cryallen.wanlearning.utils.CacheUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -52,6 +52,16 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	suspend fun getProjectArticlesData(pageNo: Int, cId: Int) = requestProjectArticles(pageNo,cId)
 
 	/**
+	 * 获取导航列表数据
+	 */
+	suspend fun getNaviArticlesData() = requestNaviArticles()
+
+	/**
+	 * 获取知识体系列表数据
+	 */
+	suspend fun getKnowledgeData() = requestKnowledge()
+
+	/**
 	 * 获取首页文章数据，基于Pageing3组件开发
 	 */
 	fun getHomePagingData(): Flow<PagingData<ModelResponse.Article>> {
@@ -68,7 +78,7 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 		coroutineScope {
 			//同时异步请求2个接口，请求完成后合并数据
 			val articleData = async { remoteRequest.getArticles(pageNo) }
-			if (CacheUtil.isNeedTop() && pageNo == 0) {
+			if (CacheUtils.isNeedTop() && pageNo == 0) {
 				val articleTopData = async { remoteRequest.getTopArticles() }
 				articleData.await().data.datas.addAll(0, articleTopData.await().data)
 			} 
@@ -123,6 +133,26 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 		coroutineScope {
 			val projectArticlesData = async { remoteRequest.getProjectArticles(pageNo,cId) }
 			projectArticlesData.await()
+		}
+	}
+
+	/**
+	 * 获取导航数据
+	 */
+	private suspend fun requestNaviArticles() = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val naviData = async { remoteRequest.getNaviArticles() }
+			naviData.await()
+		}
+	}
+
+	/**
+	 * 获取知识体系数据
+	 */
+	private suspend fun requestKnowledge() = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val knowledgeData = async { remoteRequest.getKnowledgeTree() }
+			knowledgeData.await()
 		}
 	}
 

@@ -7,12 +7,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.view.View
 import com.cryallen.wanlearning.WanApplication
-import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.GlobalUtils
 
 /**
  * 获取SharedPreferences实例。
  */
-val sharedPreferences: SharedPreferences = WanApplication.instance.getSharedPreferences(GlobalUtil.appPackage + "_preferences", Context.MODE_PRIVATE)
+val sharedPreferences: SharedPreferences = WanApplication.instance.getSharedPreferences(GlobalUtils.appPackage + "_preferences", Context.MODE_PRIVATE)
 
 /**
  * 批量设置控件点击事件。

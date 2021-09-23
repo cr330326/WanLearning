@@ -10,7 +10,7 @@ import com.cryallen.wanlearning.WanApplication
  * @author vsh9p8q
  * @DATE 2021/9/14
  */
-object TypeFaceUtil {
+object TypeFaceUtils {
 
     const val FZLL_TYPEFACE = 1
 

@@ -2,7 +2,7 @@ package com.cryallen.wanlearning.exception
 
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.model.enums.Error
-import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.GlobalUtils
 
 /***
  * 自定义错误信息异常
@@ -17,7 +17,7 @@ class AppException : Exception{
 	var throwable: Throwable? = null
 
 	constructor(errCode: Int, error: String?, errorLog: String? = "", throwable: Throwable? = null) : super(error) {
-		this.errorMsg = error ?: GlobalUtil.getString(R.string.network_request_unknown_error)
+		this.errorMsg = error ?: GlobalUtils.getString(R.string.network_request_unknown_error)
 		this.errCode = errCode
 		this.errorLog = errorLog ?: this.errorMsg
 		this.throwable = throwable

@@ -35,6 +35,9 @@ class ProjectChildFragment : BaseFragment() {
 	//该项目对应的id
 	private var cid = 0
 
+	//页码 数据页码从0开始
+	var pageNo = 0
+
 	private var isNoLoadMore : Boolean = false
 
 	private lateinit var refreshLayoutBinding: IncludeRefreshLayoutBinding
@@ -73,12 +76,14 @@ class ProjectChildFragment : BaseFragment() {
 		refreshLayoutBinding.refreshLayout.run {
 			setOnRefreshListener {
 				finishRefresh()
-				viewModel.onArticleRefresh(true,cid)
+				isNoLoadMore = false
+				pageNo = 0
+				viewModel.onArticleRefresh(pageNo,cid)
 			}
 			setOnLoadMoreListener {
 				if(!isNoLoadMore){
 					finishLoadMore()
-					viewModel.onArticleRefresh(false,cid)
+					viewModel.onArticleRefresh(pageNo,cid)
 				}else{
 					finishLoadMoreWithNoMoreData()
 				}
@@ -104,19 +109,21 @@ class ProjectChildFragment : BaseFragment() {
 					return@Observer
 				}
 
-				when(viewModel.pageNo) {
-					0 -> {
-						isNoLoadMore = false
-						viewModel.articleDataList.clear()
-						viewModel.pageNo++
-					}
-					response.data.pageCount -> {
+				when(response.data.over) {
+					true -> {
 						//关闭加载完成
 						isNoLoadMore = true
 						refreshLayoutBinding.refreshLayout.finishLoadMoreWithNoMoreData()
 					}
-					else -> {
-						viewModel.pageNo++
+					false -> {
+						if(response.data.curPage == 0) viewModel.articleDataList.clear()
+						if(response.data.curPage + 1 == response.data.pageCount) {
+							//关闭加载完成
+							isNoLoadMore = true
+							refreshLayoutBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+						} else {
+							pageNo++
+						}
 					}
 				}
 				viewModel.articleDataList.addAll(response.data.datas)
@@ -129,7 +136,7 @@ class ProjectChildFragment : BaseFragment() {
 		//设置界面 加载中
 		loadService.showLoading()
 		//请求标题数据
-		viewModel.onArticleRefresh(true,cid)
+		viewModel.onArticleRefresh(pageNo,cid)
 	}
 
 	companion object {

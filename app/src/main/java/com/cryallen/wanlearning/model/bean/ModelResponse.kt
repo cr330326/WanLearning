@@ -1,7 +1,5 @@
 package com.cryallen.wanlearning.model.bean
 
-import java.io.Serializable
-
 /***
  * 服务器响应类
  * @author vsh9p8q
@@ -57,10 +55,10 @@ class ModelResponse {
 		var parentChapterId: Int,
 		var userControlSetTop: Boolean,
 		var visible: Int
-	) : Serializable
+	)
 
 	data class Navigation(
-		var articles: List<Article>,
+		var articles: ArrayList<Article>,
 		var cid: Int,
 		var name: String
 	)
@@ -77,6 +75,20 @@ class ModelResponse {
 		var title: String,
 		var type: Int,
 		var url: String
+	)
+
+	/***
+	 * 知识体系数据类
+	 ***/
+	data class KnowLedgeChapter(
+		var children: ArrayList<Chapter>,
+		var courseId: Int,
+		var id: Int,
+		var name: String,
+		var order: Int,
+		var parentChapterId: Int,
+		var userControlSetTop: Boolean,
+		var visible: Int
 	)
 
 	/***

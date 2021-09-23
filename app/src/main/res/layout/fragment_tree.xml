@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Navigation"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/qb_px_28" />
+    <include layout="@layout/include_viewpager" />
 
 </LinearLayout>

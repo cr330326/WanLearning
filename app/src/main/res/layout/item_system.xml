@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/qb_px_10"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="@dimen/qb_px_10"
+    android:translationZ="@dimen/qb_px_10"
+    app:cardCornerRadius="@dimen/qb_px_10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_system_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_16"
+            android:layout_marginTop="@dimen/qb_px_16"
+            android:textColor="@color/color_212121"
+            android:textSize="@dimen/sb_px_30"
+            android:textStyle="bold"
+            tools:text="开发环境" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/item_system_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/qb_px_16"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

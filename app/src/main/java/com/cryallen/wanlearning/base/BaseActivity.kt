@@ -4,11 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.utils.ActivityCollector
-import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.GlobalUtils
 import com.cryallen.wanlearning.utils.LogUtils
 import com.gyf.immersionbar.ImmersionBar
 import java.lang.ref.WeakReference
@@ -116,7 +114,7 @@ abstract class BaseActivity : AppCompatActivity() {
 	protected open fun setStatusBarBackground() {
 		ImmersionBar.with(this)
 			.autoStatusBarDarkModeEnable(true, 0.2f)
-			.statusBarColorInt(GlobalUtil.getThemeColor())
+			.statusBarColorInt(GlobalUtils.getThemeColor())
 			.fitsSystemWindows(true)
 			.init()
 	}

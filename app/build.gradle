@@ -102,6 +102,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:${versions.androidx_work_manager}")
     implementation("androidx.paging:paging-runtime:${versions.androidx_paging_runtime}")
     implementation("androidx.paging:paging-runtime-ktx:${versions.androidx_paging_runtime}")
+    implementation("com.google.android:flexbox:${versions.flexbox}")
 
     // 微信MMKV
     implementation("com.tencent:mmkv:${versions.mmkv}")

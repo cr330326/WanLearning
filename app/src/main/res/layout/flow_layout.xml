@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flow_tag"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/qb_px_12"
+    android:background="@drawable/flow_selector"
+    android:gravity="center"
+    android:textSize="@dimen/sb_px_26"
+    android:paddingTop="@dimen/qb_px_12"
+    android:paddingBottom="@dimen/qb_px_12"
+    android:paddingStart="@dimen/qb_px_20"
+    android:paddingEnd="@dimen/qb_px_20"
+    android:textColor="@color/colorPrimary"
+    tools:text="@string/app_name" />

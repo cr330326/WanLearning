@@ -16,10 +16,6 @@ import com.cryallen.wanlearning.repository.RemoteRepository
  * @DATE 2021/9/23
  ***/
 class ProjectViewModel(private val repository: RemoteRepository) : BaseViewModel() {
-
-	//页码 数据页码从0开始
-	var pageNo = 0
-
 	//fragment集合
 	var fragments: ArrayList<Fragment> = arrayListOf()
 
@@ -63,10 +59,7 @@ class ProjectViewModel(private val repository: RemoteRepository) : BaseViewModel
 	}
 
 	//获取文章列表数据
-	fun onArticleRefresh(isRefresh: Boolean, cid: Int) {
-		if(isRefresh){
-			pageNo = 0
-		}
+	fun onArticleRefresh(pageNo: Int, cid: Int) {
 		articleLiveEvent.value = RequestParam(pageNo,cid)
 	}
 

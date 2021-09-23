@@ -31,7 +31,7 @@ import com.cryallen.wanlearning.ui.view.magicindicator.buildins.commonnavigator.
 import com.cryallen.wanlearning.ui.view.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import com.cryallen.wanlearning.ui.view.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 import com.cryallen.wanlearning.ui.view.viewpager.ScaleTransitionPagerTitleView
-import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.GlobalUtils
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 
@@ -128,7 +128,7 @@ fun MagicIndicator.bindViewPager2(
  * 初始化普通的toolbar 只设置标题
  */
 fun Toolbar.init(titleStr: String = ""): Toolbar {
-	setBackgroundColor(GlobalUtil.getThemeColor())
+	setBackgroundColor(GlobalUtils.getThemeColor())
 	title = titleStr
 	return this
 }
@@ -185,7 +185,7 @@ fun LoadService<*>.showLoading() {
 fun setLoadingColor(loadService: LoadService<Any>) {
 	loadService.setCallBack(LoadingCallback::class.java) { _, view ->
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintList = ColorStateList.valueOf(GlobalUtil.getThemeColor())
+			view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintList = ColorStateList.valueOf(GlobalUtils.getThemeColor())
 		}
 	}
 }

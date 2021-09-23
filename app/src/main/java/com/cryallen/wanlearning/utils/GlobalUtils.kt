@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -23,7 +22,7 @@ import java.util.*
  * @author vsh9p8q
  * @DATE 2021/9/14
  */
-object GlobalUtil {
+object GlobalUtils {
 
     private var TAG = "GlobalUtil"
 

@@ -6,7 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.cryallen.wanlearning.R
-import com.cryallen.wanlearning.utils.TypeFaceUtil
+import com.cryallen.wanlearning.utils.TypeFaceUtils
 
 /**
  * 带有自定义字体TextView。
@@ -35,11 +35,11 @@ class TypefaceTextView : AppCompatTextView {
          * 根据字体类型，获取自定义字体。
          */
         fun getTypeface(typefaceType: Int?) = when (typefaceType) {
-            TypeFaceUtil.FZLL_TYPEFACE -> TypeFaceUtil.getFzlLTypeface()
-            TypeFaceUtil.FZDB1_TYPEFACE -> TypeFaceUtil.getFzdb1Typeface()
-            TypeFaceUtil.FUTURA_TYPEFACE -> TypeFaceUtil.getFuturaTypeface()
-            TypeFaceUtil.DIN_TYPEFACE -> TypeFaceUtil.getDinTypeface()
-            TypeFaceUtil.LOBSTER_TYPEFACE -> TypeFaceUtil.getLobsterTypeface()
+            TypeFaceUtils.FZLL_TYPEFACE -> TypeFaceUtils.getFzlLTypeface()
+            TypeFaceUtils.FZDB1_TYPEFACE -> TypeFaceUtils.getFzdb1Typeface()
+            TypeFaceUtils.FUTURA_TYPEFACE -> TypeFaceUtils.getFuturaTypeface()
+            TypeFaceUtils.DIN_TYPEFACE -> TypeFaceUtils.getDinTypeface()
+            TypeFaceUtils.LOBSTER_TYPEFACE -> TypeFaceUtils.getLobsterTypeface()
             else -> Typeface.DEFAULT
         }
     }

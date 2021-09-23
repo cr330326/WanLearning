@@ -8,7 +8,7 @@ import com.cryallen.wanlearning.model.bean.ModelResponse
  * @author vsh9p8q
  * @DATE 2021/9/15
  ***/
-object CacheUtil {
+object CacheUtils {
 
     /**
      * 获取保存的账户信息

@@ -60,5 +60,17 @@ interface WanService {
 	 * 导航数据
 	 */
 	@GET("navi/json")
-	suspend fun getProjectArticles(): ApiResponse<ArrayList<ModelResponse.Navigation>>
+	suspend fun getNaviArticles(): ApiResponse<ArrayList<ModelResponse.Navigation>>
+
+	/**
+	 * 知识体系
+	 */
+	@GET("tree/json")
+	suspend fun getKnowledgeTree(): ApiResponse<ArrayList<ModelResponse.KnowLedgeChapter>>
+
+	/**
+	 * 知识体系文章列表
+	 */
+	@GET("article/list/{pageNo}/json")
+	suspend fun getKnowledgeArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
 }

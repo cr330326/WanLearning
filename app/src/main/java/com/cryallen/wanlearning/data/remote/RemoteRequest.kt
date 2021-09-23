@@ -25,6 +25,10 @@ class RemoteRequest {
 
 	suspend fun getProjectArticles(pageNo: Int,cId: Int) = wanService.getProjectArticles(pageNo,cId)
 
+	suspend fun getNaviArticles() = wanService.getNaviArticles()
+
+	suspend fun getKnowledgeTree() = wanService.getKnowledgeTree()
+
 	companion object {
 
 		//单例模式 线程安全

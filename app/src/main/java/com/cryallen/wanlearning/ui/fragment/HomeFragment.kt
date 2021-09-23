@@ -18,7 +18,7 @@ import com.cryallen.wanlearning.ui.adapter.HomeBannerAdapter
 import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.ui.view.SpaceItemDecoration
 import com.cryallen.wanlearning.ui.view.bannerview.BannerViewPager
-import com.cryallen.wanlearning.utils.GlobalUtil
+import com.cryallen.wanlearning.utils.GlobalUtils
 import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.HomeViewModel
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment(){
 	override fun initView(savedInstanceState: Bundle?){
 		//初始化 toolbar
 		binding.homeToolbar.toolbar.run {
-			init(GlobalUtil.getString(R.string.menu_bottom_home))
+			init(GlobalUtils.getString(R.string.menu_bottom_home))
 			inflateMenu(R.menu.home_menu)
 			setOnMenuItemClickListener {
 				when (it.itemId) {
@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment(){
 			}
 		}
 		//初始化横线
-		binding.viewHorizontalLine.setBackgroundColor(GlobalUtil.getThemeColor())
+		binding.viewHorizontalLine.setBackgroundColor(GlobalUtils.getThemeColor())
 
 		//初始化recyclerView
 		refreshLayoutBinding.recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
