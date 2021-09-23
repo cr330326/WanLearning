@@ -17,6 +17,8 @@ object InjectorProvider {
 	fun getHomeViewModelFactory() = HomeViewModelFactory(getRemoteRepository())
 
 	fun getWechatViewModelFactory() = WechatViewModelFactory(getRemoteRepository())
+
+	fun getProjectViewModelFactory() = ProjectViewModelFactory(getRemoteRepository())
 }
 
 /***
@@ -38,5 +40,17 @@ class WechatViewModelFactory(private val repository: RemoteRepository) : ViewMod
 	@Suppress("UNCHECKED_CAST")
 	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 		return WechatViewModel(repository) as T
+	}
+}
+
+
+/***
+ * 项目ViewModelFactory
+ ***/
+class ProjectViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
+
+	@Suppress("UNCHECKED_CAST")
+	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+		return ProjectViewModel(repository) as T
 	}
 }

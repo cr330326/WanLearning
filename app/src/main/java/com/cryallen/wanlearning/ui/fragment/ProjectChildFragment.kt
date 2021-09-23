@@ -18,16 +18,15 @@ import com.cryallen.wanlearning.ui.ext.showEmpty
 import com.cryallen.wanlearning.ui.ext.showError
 import com.cryallen.wanlearning.ui.ext.showLoading
 import com.cryallen.wanlearning.ui.view.SpaceItemDecoration
-import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
-import com.cryallen.wanlearning.viewmodel.WechatViewModel
+import com.cryallen.wanlearning.viewmodel.ProjectViewModel
 
 /***
- * 公众号章节Fragment
+ * 具体每个项目Fragment
  * @author vsh9p8q
- * @DATE 2021/9/22
+ * @DATE 2021/9/23
  ***/
-class WechatChapterFragment : BaseFragment() {
+class ProjectChildFragment : BaseFragment() {
 
 	private var _binding: IncludeListBinding? = null
 
@@ -40,7 +39,7 @@ class WechatChapterFragment : BaseFragment() {
 
 	private lateinit var refreshLayoutBinding: IncludeRefreshLayoutBinding
 
-	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getWechatViewModelFactory()).get(WechatViewModel::class.java) }
+	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getProjectViewModelFactory()).get(ProjectViewModel::class.java) }
 
 	private val articleAdapter: ArticleAdapter by lazy { ArticleAdapter(viewModel.articleDataList) }
 
@@ -135,10 +134,10 @@ class WechatChapterFragment : BaseFragment() {
 
 	companion object {
 
-		fun newInstance(cid: Int): WechatChapterFragment {
+		fun newInstance(cid: Int): ProjectChildFragment {
 			val args = Bundle()
 			args.putInt("cid", cid)
-			val fragment = WechatChapterFragment()
+			val fragment = ProjectChildFragment()
 			fragment.arguments = args
 			return fragment
 		}

@@ -11,7 +11,6 @@ import com.cryallen.wanlearning.databinding.FragmentWechatBinding
 import com.cryallen.wanlearning.databinding.IncludeViewpagerBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
 import com.cryallen.wanlearning.ui.ext.*
-import com.cryallen.wanlearning.utils.LogUtils
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
 import com.cryallen.wanlearning.viewmodel.WechatViewModel
 
@@ -24,8 +23,7 @@ class WechatFragment : BaseFragment(){
 
 	private var _binding: FragmentWechatBinding? = null
 
-	private val binding
-		get() = _binding!!
+	private val binding get() = _binding!!
 
 	private lateinit var viewPagerBinding: IncludeViewpagerBinding
 
@@ -45,7 +43,6 @@ class WechatFragment : BaseFragment(){
 	override fun initView(savedInstanceState: Bundle?) {
 		//设置加载框附着点
 		setLoadSir(viewPagerBinding.viewPager) {
-			LogUtils.d(TAG,"点击刷新Title数据")
 			loadDataOnce()
 		}
 
@@ -61,7 +58,6 @@ class WechatFragment : BaseFragment(){
 			viewModel.wxChapterTitleLiveData.observe(viewLifecycleOwner, Observer { result ->
 				loadService.showSuccess()
 				val response = result.getOrNull()
-				LogUtils.d(TAG,"createObserver response:" + response)
 				if (response == null || !response.isSucces()) {
 					//显示异常信息页面
 					loadService.showError(ExceptionHandle.handleException(result.exceptionOrNull()).errorMsg)
