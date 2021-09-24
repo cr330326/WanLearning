@@ -1,5 +1,7 @@
 package com.cryallen.wanlearning.model.bean
 
+import android.os.Parcelable
+
 /***
  * 服务器响应类
  * @author vsh9p8q
@@ -105,4 +107,13 @@ class ModelResponse {
 	                    var token: String="",
 	                    var type: Int =0,
 	                    var username: String="")
+
+	/***
+	 * 当前账户的个人积分数据类
+	 ***/
+	data class IntegralInfo(
+		var coinCount: Int,//当前积分
+		var rank: Int,
+		var userId: Int,
+		var username: String)
 }

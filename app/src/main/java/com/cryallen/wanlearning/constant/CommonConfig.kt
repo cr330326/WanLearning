@@ -20,4 +20,8 @@ object CommonConfig {
 	const val PAGING_STARTING_PAGE_INDEX = 1
 	//PagingSource 分页页面大小
 	const val PAGING_STARTING_PAGE_SIZE = 20
+
+	const val CONTAINER_FRAGMENT_TAG = "content_fragment_tag"
+	const val CONTAINER_FRAGMENT = "fragment"
+	const val CONTAINER_BUNDLE = "bundle"
 }

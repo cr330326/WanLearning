@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.cryallen.wanlearning.ui.view.preference.PreferenceCategory
+        android:key="base"
+        android:title="@string/setting_base">
+        <com.cryallen.wanlearning.ui.view.preference.CheckBoxPreference
+            android:key="top"
+            android:summary="@string/setting_top_tip"
+            android:title="@string/setting_top" />
+        <Preference
+            android:key="clearCache"
+            android:title="@string/clear_cache" />
+        <Preference
+            android:key="exit"
+            android:summary="@string/setting_login_out"
+            android:title="@string/setting_exit" />
+
+    </com.cryallen.wanlearning.ui.view.preference.PreferenceCategory>
+
+    <com.cryallen.wanlearning.ui.view.preference.PreferenceCategory
+        android:key="other"
+        android:title="@string/setting_other">
+
+        <com.cryallen.wanlearning.ui.view.preference.IconPreference
+            android:key="color"
+            android:summary="@string/choose_theme_color_summary"
+            android:title="@string/choose_theme_color" />
+
+    </com.cryallen.wanlearning.ui.view.preference.PreferenceCategory>
+
+    <com.cryallen.wanlearning.ui.view.preference.PreferenceCategory
+        android:key="about"
+        android:title="@string/setting_about">
+        <Preference
+            android:key="version"
+            android:title="@string/setting_version" />
+        <Preference
+            android:key="author"
+            android:summary="@string/author_name"
+            android:title="@string/author" />
+        <Preference
+            android:key="project"
+            android:summary="@string/github_url"
+            android:title="@string/project_address" />
+        <Preference
+            android:key="copyRight"
+            android:summary="@string/copyright_summary"
+            android:title="@string/copyright" />
+    </com.cryallen.wanlearning.ui.view.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

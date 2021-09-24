@@ -103,6 +103,7 @@ dependencies {
     implementation("androidx.paging:paging-runtime:${versions.androidx_paging_runtime}")
     implementation("androidx.paging:paging-runtime-ktx:${versions.androidx_paging_runtime}")
     implementation("com.google.android:flexbox:${versions.flexbox}")
+    implementation("androidx.preference:preference-ktx:${versions.androidx_preference}")
 
     // 微信MMKV
     implementation("com.tencent:mmkv:${versions.mmkv}")
@@ -161,6 +162,14 @@ dependencies {
 
     // loadsir
     implementation ("com.kingja.loadsir:loadsir:${versions.loadsir}")
+
+    //afollestad
+    implementation ("com.afollestad.material-dialogs:core:${versions.afollestad}")
+    implementation ("com.afollestad.material-dialogs:color:${versions.afollestad}")
+    implementation ("com.afollestad.material-dialogs:lifecycle:${versions.afollestad}")
+
+    // unpeek-livedata
+    implementation ("com.kunminx.arch:unpeek-livedata:${versions.unpeek}")
 
     //implementation 'com.tencent.sonic:sdk:3.1.0'
 

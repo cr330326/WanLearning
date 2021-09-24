@@ -73,4 +73,10 @@ interface WanService {
 	 */
 	@GET("article/list/{pageNo}/json")
 	suspend fun getKnowledgeArticles(@Path("pageNo") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<ModelResponse.Article>>>
+
+	/**
+	 * 获取当前账户的个人积分
+	 */
+	@GET("lg/coin/userinfo/json")
+	suspend fun getIntegral(): ApiResponse<ModelResponse.IntegralInfo>
 }

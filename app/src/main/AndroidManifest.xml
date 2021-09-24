@@ -63,6 +63,10 @@
             android:name=".ui.activity.SplashActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.ContainerActivity"
+            android:configChanges="orientation|keyboardHidden"></activity>
     </application>
 
 </manifest>

@@ -16,8 +16,7 @@ class MineFragment : BaseFragment(){
 
 	private var _binding: FragmentMineBinding? = null
 
-	private val binding
-		get() = _binding!!
+	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		_binding = FragmentMineBinding.inflate(layoutInflater, container, false)
@@ -29,9 +28,19 @@ class MineFragment : BaseFragment(){
 		_binding = null
 	}
 
-	override fun initView(savedInstanceState: Bundle?) {}
+	override fun initView(savedInstanceState: Bundle?) {
+		binding.click = ProxyClick()
+	}
 
 	override fun createObserver() {}
+
+	inner class ProxyClick {
+
+		/** 系统设置 */
+		fun clickSetting() {
+			startContainerActivity(SettingFragment::class.java.canonicalName)
+		}
+	}
 
 	companion object {
 
