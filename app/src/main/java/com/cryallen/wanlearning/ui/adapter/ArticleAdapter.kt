@@ -5,6 +5,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.extension.toHtml
 import com.cryallen.wanlearning.model.bean.ModelResponse
+import com.cryallen.wanlearning.ui.activity.WebViewActivity
 import com.cryallen.wanlearning.utils.GlideLoadUtils
 import com.cryallen.wanlearning.utils.LogUtils
 
@@ -53,12 +54,8 @@ class ArticleAdapter(data : MutableList<ModelResponse.Article>) :
 		}
 
 		holder.itemView.setOnClickListener {
-			/*Intent(context, WebActivity::class.java).run {
-				putExtra(Constants.WEB_TITLE, item.title)
-				putExtra(Constants.WEB_URL, item.link)
-				context.startActivity(this)
-			}*/
 			LogUtils.d("item onclick start link:" + item.link)
+			WebViewActivity.start(context, item.title, item.link,false)
 		}
 	}
 }

@@ -23,9 +23,6 @@ android {
             jniDebuggable true
             minifyEnabled false
             shrinkResources false
-           /* manifestPlaceholders = [
-                    networkSecurityConfig: "@xml/network_security_config_test"
-            ]*/
         }
 
         release {
@@ -34,9 +31,6 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            /*manifestPlaceholders = [
-                    networkSecurityConfig: "@xml/network_security_config"
-            ]*/
         }
     }
 
@@ -163,7 +157,7 @@ dependencies {
     // loadsir
     implementation ("com.kingja.loadsir:loadsir:${versions.loadsir}")
 
-    //afollestad
+    // afollestad
     implementation ("com.afollestad.material-dialogs:core:${versions.afollestad}")
     implementation ("com.afollestad.material-dialogs:color:${versions.afollestad}")
     implementation ("com.afollestad.material-dialogs:lifecycle:${versions.afollestad}")
@@ -171,7 +165,8 @@ dependencies {
     // unpeek-livedata
     implementation ("com.kunminx.arch:unpeek-livedata:${versions.unpeek}")
 
-    //implementation 'com.tencent.sonic:sdk:3.1.0'
+    // sonic
+    implementation ("com.tencent.sonic:sdk:${versions.sonic}")
 
     // 微信分享SDK
     //implementation("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechat_sdk}")

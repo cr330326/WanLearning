@@ -13,6 +13,7 @@ import com.cryallen.wanlearning.databinding.FragmentHomeBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
 import com.cryallen.wanlearning.model.bean.ModelResponse
+import com.cryallen.wanlearning.ui.activity.WebViewActivity
 import com.cryallen.wanlearning.ui.adapter.ArticleAdapter
 import com.cryallen.wanlearning.ui.adapter.HomeBannerAdapter
 import com.cryallen.wanlearning.ui.ext.*
@@ -157,9 +158,9 @@ class HomeFragment : BaseFragment(){
 							findViewById<BannerViewPager<ModelResponse.Banner>>(R.id.banner_view).apply {
 								adapter = HomeBannerAdapter()
 								setLifecycleRegistry(lifecycle)
-								/*setOnPageClickListener {
-									//nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {putParcelable("bannerdata", data[it])})
-								}*/
+								setOnPageClickListener{ _, it ->
+									WebViewActivity.start(context, response.data[it].title, response.data[it].url,false)
+								}
 								create(response.data)
 							}
 					}

@@ -18,6 +18,7 @@
     <string name="menu_bottom_me">我的</string>
     <string name="menu_top_search">搜索</string>
     <string name="menu_top_setting">设置</string>
+    <string name="menu_top_web">网页</string>
 
     <string name="common_load_loading">正在加载中...</string>
     <string name="common_load_empty">当前没有数据。</string>

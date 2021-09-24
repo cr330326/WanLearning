@@ -7,6 +7,11 @@ import android.text.Html
 import android.text.Spanned
 import android.widget.Toast
 import com.cryallen.wanlearning.WanApplication
+import com.cryallen.wanlearning.ui.vassonic.SonicRuntimeImpl
+import com.cryallen.wanlearning.utils.LogUtils
+import com.tencent.sonic.sdk.SonicConfig
+import com.tencent.sonic.sdk.SonicEngine
+import com.tencent.sonic.sdk.SonicSessionConfig
 
 /**
  * 弹出Toast提示。
@@ -23,4 +28,19 @@ fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
     } else {
         Html.fromHtml(this)
     }
+}
+
+/**
+ * VasSonic预加载session。
+ *
+ * @param CharSequence 预加载url
+ */
+fun CharSequence.preCreateSession(): Boolean {
+    if (!SonicEngine.isGetInstanceAllowed()) {
+        SonicEngine.createInstance(SonicRuntimeImpl(WanApplication.instance), SonicConfig.Builder().build())
+    }
+    val sessionConfigBuilder = SonicSessionConfig.Builder().apply { setSupportLocalServer(true) }
+    val preloadSuccess = SonicEngine.getInstance().preCreateSession(this.toString(), sessionConfigBuilder.build())
+    LogUtils.d("preCreateSession()", "${this}\t:${if (preloadSuccess) "Preload start up success!" else "Preload start up fail!"}")
+    return preloadSuccess
 }

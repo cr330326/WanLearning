@@ -13,6 +13,7 @@ import com.cryallen.wanlearning.extension.setOnClickListener
 import com.cryallen.wanlearning.extension.showToast
 import com.cryallen.wanlearning.ui.ext.setIconTint
 import com.cryallen.wanlearning.ui.fragment.*
+import com.cryallen.wanlearning.utils.ActivityCollector
 import com.cryallen.wanlearning.utils.GlobalUtils
 
 /***
@@ -65,12 +66,11 @@ class MainActivity : BaseActivity() {
 			String.format(GlobalUtils.getString(R.string.press_again_to_exit), GlobalUtils.appName).showToast()
 			backPressTime = now
 		} else {
-			super.onBackPressed()
+			ActivityCollector.appExit()
 		}
 	}
 
 	override fun setupViews() {
-		//initViewObservable()
 		binding.bottomLine.setBackgroundColor(GlobalUtils.getThemeColor())
 		setOnClickListener(
 			binding.navigationBar.btnMenuHome, binding.navigationBar.btnMenuWechat, binding.navigationBar.btnMenuProject, binding.navigationBar.btnMenuNavi,
