@@ -60,6 +60,7 @@
                     android:layout_width="@dimen/qb_px_48"
                     android:layout_height="@dimen/qb_px_48"
                     android:layout_marginRight="@dimen/qb_px_12"
+                    android:onClick="@{()->click.clickClear()}"
                     android:src="@mipmap/ic_clear" />
             </LinearLayout>
 
@@ -89,7 +90,7 @@
                 <CheckBox
                     android:layout_width="@dimen/qb_px_48"
                     android:layout_height="@dimen/qb_px_48"
-                    android:layout_marginRight="@dimen/qb_px_12"
+                    android:layout_marginRight="@dimen/qb_px_15"
                     android:button="@drawable/key_visibily_selector"
                     android:checked="false"
                     android:visibility="@{viewModel.passwordVisible}"

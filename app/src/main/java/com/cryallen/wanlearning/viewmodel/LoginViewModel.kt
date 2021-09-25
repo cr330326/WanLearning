@@ -2,7 +2,12 @@ package com.cryallen.wanlearning.viewmodel
 
 import android.view.View
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.liveData
 import com.cryallen.wanlearning.base.BaseViewModel
+import com.cryallen.wanlearning.bus.event.SingleLiveEvent
+import com.cryallen.wanlearning.model.bean.ApiResponse
+import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.repository.RemoteRepository
 import com.cryallen.wanlearning.ui.databind.BooleanObservableField
 import com.cryallen.wanlearning.ui.databind.StringObservableField
@@ -61,5 +66,24 @@ class LoginViewModel(private val repository: RemoteRepository) : BaseViewModel()
 		}
 	}
 
+	private var loginLiveEvent = SingleLiveEvent<RequestParam>()
 
+	//从Repository层进行登陆操作
+	val loginLiveData = Transformations.switchMap(loginLiveEvent) {
+		liveData {
+			val loginResult = try {
+				Result.success(repository.login(it!!.username,it.pwd))
+			} catch (e: Exception) {
+				Result.failure<ApiResponse<ModelResponse.UserInfo>>(e)
+			}
+			emit(loginResult)
+		}
+	}
+
+	//开始登陆
+	fun onLogin(username: String, pwd: String) {
+		loginLiveEvent.value = RequestParam(username,pwd)
+	}
+
+	inner class RequestParam(val username: String, val pwd: String,val confirmPwd: String = "")
 }

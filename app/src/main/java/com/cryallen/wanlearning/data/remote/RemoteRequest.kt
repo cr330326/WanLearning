@@ -31,6 +31,10 @@ class RemoteRequest {
 
 	suspend fun getIntegral() = wanService.getIntegral()
 
+	suspend fun login(username : String, pwd: String) = wanService.login(username,pwd)
+
+	suspend fun register(username : String, pwd: String, confirmPwd: String) = wanService.register(username,pwd,confirmPwd)
+
 	companion object {
 
 		//单例模式 线程安全

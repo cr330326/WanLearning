@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.cryallen.wanlearning.extension.textString
+import com.cryallen.wanlearning.ui.ext.textString
 import com.cryallen.wanlearning.ui.view.preference.MyColorCircleView
 
 /***

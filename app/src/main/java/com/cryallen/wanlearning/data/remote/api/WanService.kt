@@ -3,9 +3,7 @@ package com.cryallen.wanlearning.data.remote.api
 import com.cryallen.wanlearning.model.bean.ApiPagerResponse
 import com.cryallen.wanlearning.model.bean.ApiResponse
 import com.cryallen.wanlearning.model.bean.ModelResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /***
  * 应用服务端API地址
@@ -13,6 +11,20 @@ import retrofit2.http.Query
  * @DATE 2021/9/15
  ***/
 interface WanService {
+
+	/**
+	 * 登录
+	 */
+	@FormUrlEncoded
+	@POST("user/login")
+	suspend fun login(@Field("username") username: String, @Field("password") pwd: String): ApiResponse<ModelResponse.UserInfo>
+
+	/**
+	 * 注册
+	 */
+	@FormUrlEncoded
+	@POST("user/register")
+	suspend fun register(@Field("username") username: String, @Field("password") pwd: String, @Field("repassword") rpwd: String): ApiResponse<Any>
 
 	/**
 	 * 首页文章列表

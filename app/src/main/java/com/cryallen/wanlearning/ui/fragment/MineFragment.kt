@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentMineBinding
+import com.cryallen.wanlearning.extension.loadCircle
 import com.cryallen.wanlearning.ui.activity.WebViewActivity
+import com.cryallen.wanlearning.utils.CacheUtils
+import com.cryallen.wanlearning.utils.GlobalUtils
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
 import com.cryallen.wanlearning.viewmodel.MineViewModel
 
@@ -36,6 +40,7 @@ class MineFragment : BaseFragment(){
 	}
 
 	override fun initView(savedInstanceState: Bundle?) {
+		binding.meImage.loadCircle(GlobalUtils.randomImage())
 		binding.click = ProxyClick()
 	}
 
@@ -45,11 +50,15 @@ class MineFragment : BaseFragment(){
 			viewModel.integralLiveData.observe(viewLifecycleOwner, Observer { result ->
 				val response = result.getOrNull()
 				if (response == null || !response.isSucces()) {
+					binding.meName.text = GlobalUtils.getString(R.string.mine_item_hint_login)
+					binding.meInfo.text = GlobalUtils.getString(R.string.mine_item_hint_info)
+					binding.meIntegral.visibility = View.GONE
 					return@Observer
 				}
 				binding.meName.text = response.data.username
 				binding.meInfo.text ="id：${response.data.userId}  排名：${response.data.rank}"
 				binding.meIntegral.text = response.data.coinCount.toString()
+				binding.meIntegral.visibility = View.VISIBLE
 			})
 		}
 	}
@@ -59,6 +68,13 @@ class MineFragment : BaseFragment(){
 	}
 
 	inner class ProxyClick {
+
+		/** 登陆 */
+		fun clickLogin() {
+			if(!CacheUtils.isLogin()){
+				startContainerActivity(LoginFragment::class.java.canonicalName)
+			}
+		}
 
 		/** 系统设置 */
 		fun clickSetting() {

@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.color.colorChooser
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.data.remote.ServiceCreator
 import com.cryallen.wanlearning.ui.ext.initBack
 import com.cryallen.wanlearning.ui.ext.showMessage
 import com.cryallen.wanlearning.ui.view.preference.CheckBoxPreference
@@ -69,6 +70,8 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 				positiveButtonText = GlobalUtils.getString(R.string.dialog_exit),
 				negativeButtonText = GlobalUtils.getString(R.string.dialog_cancel),
 				positiveAction = {
+					//清空cookie
+					ServiceCreator.cookieJar.clear()
 					//清空账号
 					CacheUtils.setUser(null)
 					//appViewModel.userInfo.value = null

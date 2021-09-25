@@ -31,6 +31,7 @@
     <string name="item_fresh">新</string>
 
     <string name="mine_item_hint_login">请先登陆</string>
+    <string name="mine_item_hint_info">id：--  排名：--</string>
     <string name="mine_item_integral">我的积分</string>
     <string name="mine_item_curr_integral">当前积分</string>
     <string name="mine_item_articles">我的文章</string>
@@ -74,4 +75,8 @@
     <string name="login_item_login">登陆</string>
     <string name="login_item_register">注册</string>
     <string name="login_item_register_login">注册并登陆</string>
+
+    <string name="login_item_input_username_tip">账号不能为空，请重新输入</string>
+    <string name="login_item_input_password_tip">密码不能为空，请重新输入</string>
+    <string name="login_success_tip">恭喜你，登陆成功！</string>
 </resources>

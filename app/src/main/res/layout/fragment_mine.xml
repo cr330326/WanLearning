@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -19,12 +18,13 @@
             android:id="@+id/me_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{()->click.clickLogin()}"
             android:background="@color/colorPrimary"
             android:paddingTop="?attr/actionBarSize"
             android:paddingBottom="?attr/actionBarSize">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/me_image"
                 android:layout_width="@dimen/qb_px_144"
                 android:layout_height="@dimen/qb_px_144"
                 android:layout_marginStart="@dimen/qb_px_30"
@@ -45,8 +45,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/me_info"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/me_image"
+                app:layout_constraintTop_toTopOf="@+id/me_image"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -55,11 +55,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/qb_px_32"
                 android:layout_marginTop="@dimen/qb_px_24"
-                android:text="id：--  排名：--"
+                android:text="@string/mine_item_hint_info"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sb_px_24"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintBottom_toBottomOf="@+id/me_image"
+                app:layout_constraintStart_toEndOf="@+id/me_image"
                 app:layout_constraintTop_toBottomOf="@+id/me_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

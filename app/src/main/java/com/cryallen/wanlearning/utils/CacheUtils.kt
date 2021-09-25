@@ -51,7 +51,7 @@ object CacheUtils {
     /**
      * 设置是否已经登录
      */
-    private fun setIsLogin(isLogin: Boolean) {
+    fun setIsLogin(isLogin: Boolean) {
         XKeyValue.put("login", isLogin)
     }
 

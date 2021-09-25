@@ -67,6 +67,16 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	suspend fun getIntegral() = requestIntegral()
 
 	/**
+	 * 个人登陆
+	 */
+	suspend fun login(username : String, pwd: String) = requestLogin(username,pwd)
+
+	/**
+	 * 个人注册
+	 */
+	suspend fun register(username : String, pwd: String, confirmPwd: String) = requestRegister(username,pwd,confirmPwd)
+
+	/**
 	 * 获取首页文章数据，基于Pageing3组件开发
 	 */
 	fun getHomePagingData(): Flow<PagingData<ModelResponse.Article>> {
@@ -167,6 +177,26 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	private suspend fun requestIntegral() = withContext(Dispatchers.IO) {
 		coroutineScope {
 			val knowledgeData = async { remoteRequest.getIntegral() }
+			knowledgeData.await()
+		}
+	}
+
+	/**
+	 * 个人登陆
+	 */
+	private suspend fun requestLogin(username : String, pwd: String) = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val knowledgeData = async { remoteRequest.login(username,pwd) }
+			knowledgeData.await()
+		}
+	}
+
+	/**
+	 * 个人注册
+	 */
+	private suspend fun requestRegister(username : String, pwd: String, confirmPwd: String) = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val knowledgeData = async { remoteRequest.register(username,pwd,confirmPwd) }
 			knowledgeData.await()
 		}
 	}
