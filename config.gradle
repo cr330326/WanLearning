@@ -43,6 +43,7 @@ versions.flexbox = "2.0.1"
 versions.afollestad = "3.3.0"
 versions.unpeek="7.2.0-beta1"
 versions.sonic="3.1.0"
+versions.permissionx="1.2.2"
 ext.versions = versions
 
 /**

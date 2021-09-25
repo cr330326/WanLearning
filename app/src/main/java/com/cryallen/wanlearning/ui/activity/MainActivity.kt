@@ -1,5 +1,6 @@
 package com.cryallen.wanlearning.ui.activity
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -15,6 +16,7 @@ import com.cryallen.wanlearning.ui.ext.setIconTint
 import com.cryallen.wanlearning.ui.fragment.*
 import com.cryallen.wanlearning.utils.ActivityCollector
 import com.cryallen.wanlearning.utils.GlobalUtils
+import com.permissionx.guolindev.PermissionX
 
 /***
  * 应用首页
@@ -43,6 +45,7 @@ class MainActivity : BaseActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		requestWriteExternalStoragePermission()
 		_binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 	}
@@ -78,22 +81,18 @@ class MainActivity : BaseActivity() {
 		) {
 			when (this) {
 				binding.navigationBar.btnMenuHome -> {
-					//notificationUiRefresh(0)
 					setTabSelection(0)
 				}
 				binding.navigationBar.btnMenuWechat -> {
-					//notificationUiRefresh(1)
 					setTabSelection(1)
 				}
 				binding.navigationBar.btnMenuProject -> {
-					//notificationUiRefresh(2)
 					setTabSelection(2)
 				}
 				binding.navigationBar.btnMenuNavi -> {
 					setTabSelection(3)
 				}
 				binding.navigationBar.btnMenuMine -> {
-					//notificationUiRefresh(3)
 					setTabSelection(4)
 				}
 			}
@@ -196,6 +195,23 @@ class MainActivity : BaseActivity() {
 			if (treeArrFragment != null) hide(treeArrFragment!!)
 			if (mineFragment != null) hide(mineFragment!!)
 		}
+	}
+
+	private fun requestWriteExternalStoragePermission() {
+		PermissionX.init(this).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+			.onExplainRequestReason { scope, deniedList ->
+				val message = GlobalUtils.getString(R.string.request_permission_picture_processing)
+				scope.showRequestReasonDialog(deniedList, message, GlobalUtils.getString(R.string.dialog_confirm), GlobalUtils.getString(R.string.dialog_cancel))
+			}
+			.onForwardToSettings { scope, deniedList ->
+				val message = GlobalUtils.getString(R.string.request_permission_picture_processing)
+				scope.showForwardToSettingsDialog(deniedList, message, GlobalUtils.getString(R.string.dialog_settings), GlobalUtils.getString(R.string.dialog_cancel))
+			}
+			.request { allGranted, grantedList, deniedList ->
+				if(!allGranted){
+					GlobalUtils.getString(R.string.request_permission_error_tip).showToast()
+				}
+			}
 	}
 
 	companion object {

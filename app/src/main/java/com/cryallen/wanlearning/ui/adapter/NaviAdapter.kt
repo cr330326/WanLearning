@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.extension.toHtml
 import com.cryallen.wanlearning.model.bean.ModelResponse
+import com.cryallen.wanlearning.ui.activity.WebViewActivity
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
@@ -36,14 +37,10 @@ class NaviAdapter(data : MutableList<ModelResponse.Navigation>):
 				isNestedScrollingEnabled = false
 				adapter = NavigationChildAdapter(item.articles).apply {
 					setOnItemClickListener { _, view, position ->
-						//navigationAction.invoke(item.articles[position], view)
+						WebViewActivity.start(context, item.articles[position].title, item.articles[position].link,false)
 					}
 				}
 			}
-
-
 		}
-
-
 	}
 }

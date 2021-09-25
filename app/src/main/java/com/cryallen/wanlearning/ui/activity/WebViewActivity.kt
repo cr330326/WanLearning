@@ -92,7 +92,9 @@ class WebViewActivity : BaseActivity() {
 		}
 		binding.webToolbar.toolbar.title = title
 		//设置加载框附着点
-		loadService = loadServiceInit(binding.webView){}
+		loadService = loadServiceInit(binding.webView){
+			//start(this, title, linkUrl,false)
+		}
 	}
 
 	@SuppressLint("SetJavaScriptEnabled")

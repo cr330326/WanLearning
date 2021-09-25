@@ -13,9 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <!--读取设备权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <!--外存储写权限，构建语法需要用到此权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--外存储读权限，构建语法需要用到此权限 -->
@@ -72,6 +69,7 @@
 
         <activity
             android:name=".ui.activity.WebViewActivity"
+            android:launchMode="singleTop"
             android:configChanges="orientation|keyboardHidden"/>
     </application>
 

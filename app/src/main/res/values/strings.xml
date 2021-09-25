@@ -3,8 +3,10 @@
 
     <string name="slogan_two">Daily appetizersfor your eyes. Bon eyepétit.</string>
 
-    <string name="press_again_to_exit">再按一次退出%1$s</string>
+    <string name="request_permission_picture_processing">需要存储权限来处理您的图片信息</string>
+    <string name="request_permission_error_tip">所需权限被拒绝，该功能暂不可用</string>
 
+    <string name="press_again_to_exit">再按一次退出%1$s</string>
     <string name="network_request_unknown_error">请求失败，请稍后再试。</string>
     <string name="network_request_parse_error">解析错误，请稍后再试。</string>
     <string name="network_request_connect_error">网络连接错误，请稍后重试。</string>
@@ -48,7 +50,7 @@
     <string name="setting_version">版本</string>
     <string name="setting_exit">退出</string>
     <string name="copyright">版权声明</string>
-    <string name="copyright_tip">本App使用的Api均为 玩Android网站 提供，仅供于大家学习交流</string>
+    <string name="copyright_tip">本App使用的Api均为 玩Android网站提供，仅供于大家学习交流</string>
     <string name="copyright_summary">仅作个人及非商业用途</string>
 
     <string name="author">作者</string>
@@ -63,4 +65,5 @@
     <string name="dialog_exit">退出</string>
     <string name="dialog_cancel">取消</string>
     <string name="dialog_clear">清理</string>
+    <string name="dialog_settings">设置</string>
 </resources>
