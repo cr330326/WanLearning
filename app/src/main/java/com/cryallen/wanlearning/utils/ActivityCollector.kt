@@ -3,6 +3,7 @@ package com.cryallen.wanlearning.utils
 import android.app.Activity
 import java.lang.ref.WeakReference
 import java.util.*
+import kotlin.system.exitProcess
 
 /***
  * 管理应用程序中所有Activity 单例
@@ -75,10 +76,10 @@ object ActivityCollector {
 			// 杀死该应用进程
 			android.os.Process.killProcess(android.os.Process.myPid());
 //            调用 System.exit(n) 实际上等效于调用：
-//            Runtime.getRuntime().exit(n)
+//            Runtime.getRuntime().exit(0)
 //            finish()是Activity的类方法，仅仅针对Activity，当调用finish()时，只是将活动推向后台，并没有立即释放内存，活动的资源并没有被清理；当调用System.exit(0)时，退出当前Activity并释放资源（内存），但是该方法不可以结束整个App如有多个Activty或者有其他组件service等不会结束。
 //            其实android的机制决定了用户无法完全退出应用，当你的application最长时间没有被用过的时候，android自身会决定将application关闭了。
-			System.exit(0);
+			exitProcess(0)
 		} catch (e: Exception) {
 			activitys.clear()
 			e.printStackTrace()
