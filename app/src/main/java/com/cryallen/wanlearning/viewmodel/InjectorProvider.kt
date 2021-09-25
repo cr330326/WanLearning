@@ -21,6 +21,10 @@ object InjectorProvider {
 	fun getProjectViewModelFactory() = ProjectViewModelFactory(getRemoteRepository())
 
 	fun getTreeViewModelFactory() = TreeViewModelFactory(getRemoteRepository())
+
+	fun getMineViewModelFactory() = MineViewModelFactory(getRemoteRepository())
+
+	fun getLoginViewModelFactory() = LoginViewModelFactory(getRemoteRepository())
 }
 
 /***
@@ -66,5 +70,27 @@ class TreeViewModelFactory(private val repository: RemoteRepository) : ViewModel
 	@Suppress("UNCHECKED_CAST")
 	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 		return TreeViewModel(repository) as T
+	}
+}
+
+/***
+ * 个人页面 ViewModelFactory
+ ***/
+class MineViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
+
+	@Suppress("UNCHECKED_CAST")
+	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+		return MineViewModel(repository) as T
+	}
+}
+
+/***
+ * 登陆和注册 ViewModelFactory
+ ***/
+class LoginViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
+
+	@Suppress("UNCHECKED_CAST")
+	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+		return LoginViewModel(repository) as T
 	}
 }

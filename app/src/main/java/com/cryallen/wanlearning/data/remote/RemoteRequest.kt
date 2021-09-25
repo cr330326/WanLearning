@@ -29,6 +29,8 @@ class RemoteRequest {
 
 	suspend fun getKnowledgeTree() = wanService.getKnowledgeTree()
 
+	suspend fun getIntegral() = wanService.getIntegral()
+
 	companion object {
 
 		//单例模式 线程安全

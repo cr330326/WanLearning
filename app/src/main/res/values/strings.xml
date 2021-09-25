@@ -30,11 +30,12 @@
     <string name="item_on_top">置顶</string>
     <string name="item_fresh">新</string>
 
+    <string name="mine_item_hint_login">请先登陆</string>
     <string name="mine_item_integral">我的积分</string>
     <string name="mine_item_curr_integral">当前积分</string>
     <string name="mine_item_articles">我的文章</string>
     <string name="mine_item_todo">待办事项</string>
-    <string name="mine_item_web">玩Android</string>
+    <string name="mine_item_wan">玩Android</string>
     <string name="mine_item_setting">系统设置</string>
 
     <string name="setting_base">基本设置</string>
@@ -54,7 +55,7 @@
     <string name="copyright_summary">仅作个人及非商业用途</string>
 
     <string name="author">作者</string>
-    <string name="author_name">CryAllen</string>
+    <string name="author_name">cryAllen</string>
     <string name="project_address">项目源码</string>
     <string name="github_url">https://github.com/cr330326/WanLearning</string>
 
@@ -66,4 +67,11 @@
     <string name="dialog_cancel">取消</string>
     <string name="dialog_clear">清理</string>
     <string name="dialog_settings">设置</string>
+
+    <string name="login_item_hint_username">账户</string>
+    <string name="login_item_hint_password">密码</string>
+    <string name="login_item_hint_confirm_password">确认密码</string>
+    <string name="login_item_login">登陆</string>
+    <string name="login_item_register">注册</string>
+    <string name="login_item_register_login">注册并登陆</string>
 </resources>

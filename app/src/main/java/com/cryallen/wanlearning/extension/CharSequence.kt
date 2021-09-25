@@ -5,6 +5,7 @@ package com.cryallen.wanlearning.extension
 
 import android.text.Html
 import android.text.Spanned
+import android.widget.EditText
 import android.widget.Toast
 import com.cryallen.wanlearning.WanApplication
 import com.cryallen.wanlearning.ui.vassonic.SonicRuntimeImpl
@@ -43,4 +44,11 @@ fun CharSequence.preCreateSession(): Boolean {
     val preloadSuccess = SonicEngine.getInstance().preCreateSession(this.toString(), sessionConfigBuilder.build())
     LogUtils.d("preCreateSession()", "${this}\t:${if (preloadSuccess) "Preload start up success!" else "Preload start up fail!"}")
     return preloadSuccess
+}
+
+/**
+ * 获取文本
+ */
+fun EditText.textString(): String {
+    return this.text.toString()
 }

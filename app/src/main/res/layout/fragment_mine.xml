@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/qb_px_32"
                 android:layout_marginEnd="@dimen/qb_px_32"
-                android:text=""
+                android:text="@string/mine_item_hint_login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sb_px_32"
                 android:textStyle="bold"
@@ -47,8 +47,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:text="用户名称" />
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/me_info"
@@ -56,13 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/qb_px_32"
                 android:layout_marginTop="@dimen/qb_px_24"
-                android:text=""
+                android:text="id：--  排名：--"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sb_px_24"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/me_name"
-                tools:text="id：--　排名：--" />
+                app:layout_constraintTop_toBottomOf="@+id/me_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -200,6 +198,7 @@
                     android:layout_height="@dimen/qb_px_100"
                     android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
+                    android:onClick="@{()->click.clickWan()}"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/qb_px_32"
                     android:paddingRight="@dimen/qb_px_32">
@@ -214,7 +213,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/mine_item_web"
+                        android:text="@string/mine_item_wan"
                         android:textColor="@color/color_212121"
                         android:textSize="@dimen/sb_px_28"
                         android:textStyle="bold" />

@@ -62,6 +62,11 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	suspend fun getKnowledgeData() = requestKnowledge()
 
 	/**
+	 * 获取个人积分数据
+	 */
+	suspend fun getIntegral() = requestIntegral()
+
+	/**
 	 * 获取首页文章数据，基于Pageing3组件开发
 	 */
 	fun getHomePagingData(): Flow<PagingData<ModelResponse.Article>> {
@@ -152,6 +157,16 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	private suspend fun requestKnowledge() = withContext(Dispatchers.IO) {
 		coroutineScope {
 			val knowledgeData = async { remoteRequest.getKnowledgeTree() }
+			knowledgeData.await()
+		}
+	}
+
+	/**
+	 * 获取个人积分数据
+	 */
+	private suspend fun requestIntegral() = withContext(Dispatchers.IO) {
+		coroutineScope {
+			val knowledgeData = async { remoteRequest.getIntegral() }
 			knowledgeData.await()
 		}
 	}
