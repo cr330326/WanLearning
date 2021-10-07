@@ -140,6 +140,7 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 		}
 
 		findPreference<Preference>("author")?.setOnPreferenceClickListener {
+			WebViewActivity.start(requireContext(),"斜杠Allen","http://cryallen.com/")
 			false
 		}
 
