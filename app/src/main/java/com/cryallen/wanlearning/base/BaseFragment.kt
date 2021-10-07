@@ -12,6 +12,7 @@ import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.ui.activity.ContainerActivity
 import com.cryallen.wanlearning.ui.ext.loadServiceInit
 import com.cryallen.wanlearning.utils.LogUtils
+import com.gyf.immersionbar.ImmersionBar
 import com.kingja.loadsir.core.LoadService
 
 /***
@@ -106,6 +107,8 @@ abstract class BaseFragment : Fragment() {
 
 	override fun onDestroy() {
 		super.onDestroy()
+		//必须调用该方法，防止内存泄漏
+		ImmersionBar.destroy(this)
 		LogUtils.d(TAG, "BaseFragment-->onDestroy()")
 	}
 

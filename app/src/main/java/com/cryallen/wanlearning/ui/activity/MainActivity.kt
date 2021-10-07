@@ -74,6 +74,7 @@ class MainActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
+		super.setupViews()
 		binding.bottomLine.setBackgroundColor(GlobalUtils.getThemeColor())
 		setOnClickListener(
 			binding.navigationBar.btnMenuHome, binding.navigationBar.btnMenuWechat, binding.navigationBar.btnMenuProject, binding.navigationBar.btnMenuNavi,

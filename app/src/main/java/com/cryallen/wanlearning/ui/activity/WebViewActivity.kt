@@ -72,6 +72,7 @@ class WebViewActivity : BaseActivity() {
 	}
 
 	override fun setupViews(){
+		super.setupViews()
 		initTitleBar()
 		initWebView()
 		if (sonicSessionClient != null) {

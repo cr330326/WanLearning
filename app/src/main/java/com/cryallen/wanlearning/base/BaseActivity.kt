@@ -2,9 +2,13 @@ package com.cryallen.wanlearning.base
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.utils.ActivityCollector
 import com.cryallen.wanlearning.utils.GlobalUtils
@@ -12,8 +16,6 @@ import com.cryallen.wanlearning.utils.LogUtils
 import com.gyf.immersionbar.ImmersionBar
 import java.lang.ref.WeakReference
 import com.cryallen.wanlearning.ui.activity.ContainerActivity
-
-
 
 
 /***
@@ -96,21 +98,34 @@ abstract class BaseActivity : AppCompatActivity() {
 	override fun onDestroy() {
 		super.onDestroy()
 		LogUtils.d(TAG, "BaseActivity-->onDestroy()")
-
 		activity = null
 		ActivityCollector.removeTask(activityWR)
 	}
 
 	override fun setContentView(layoutResID: Int) {
 		super.setContentView(layoutResID)
+		window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+		supportActionBar?.setBackgroundDrawable(ColorDrawable(GlobalUtils.getThemeColor()))
 		setStatusBarBackground()
 		setupViews()
 	}
 
 	override fun setContentView(layoutView: View) {
 		super.setContentView(layoutView)
+		window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+		supportActionBar?.setBackgroundDrawable(ColorDrawable(GlobalUtils.getThemeColor()))
 		setStatusBarBackground()
 		setupViews()
+	}
+
+	/**
+	 * 初始化状态栏背景色
+	 */
+	protected open fun setupViews() {
+		appViewModel.appColor.observe(this, Observer {
+			supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+			setStatusBarBackground()
+		})
 	}
 
 	/**
@@ -160,9 +175,5 @@ abstract class BaseActivity : AppCompatActivity() {
 			intent.putExtra(CommonConfig.CONTAINER_BUNDLE, bundle)
 		}
 		startActivity(intent)
-	}
-
-	protected open fun setupViews() {
-
 	}
 }

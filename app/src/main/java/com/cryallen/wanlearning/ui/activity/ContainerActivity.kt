@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager
 import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.databinding.ActivityContainerBinding
+import com.cryallen.wanlearning.extension.setOnClickListener
+import com.cryallen.wanlearning.utils.GlobalUtils
 
 import java.lang.RuntimeException
 import java.lang.ref.WeakReference
@@ -50,6 +52,10 @@ class ContainerActivity : BaseActivity() {
 		}.commitAllowingStateLoss()
 
 		mWeakFragment = WeakReference(fragment)
+	}
+
+	override fun setupViews() {
+		super.setupViews()
 	}
 
 	override fun onDestroy() {
