@@ -1,5 +1,6 @@
 package com.cryallen.wanlearning.ui.event
 
+import com.cryallen.wanlearning.base.BaseViewModel
 import com.cryallen.wanlearning.model.bean.ModelResponse
 import com.cryallen.wanlearning.utils.CacheUtils
 import com.cryallen.wanlearning.utils.GlobalUtils
@@ -11,7 +12,7 @@ import com.kunminx.architecture.ui.callback.UnPeekLiveData
  * @author vsh9p8q
  * @DATE 2021/9/25
  ***/
-class AppViewModel {
+class AppViewModel : BaseViewModel() {
 
 	//App的账户信息
 	var userInfo = UnPeekLiveData.Builder<ModelResponse.UserInfo>().setAllowNullValue(true).create()

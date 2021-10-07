@@ -131,7 +131,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/loginSub"
+                android:id="@+id/registerAndLogin"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_96"
                 android:layout_marginTop="@dimen/qb_px_60"

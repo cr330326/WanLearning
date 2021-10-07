@@ -3,15 +3,15 @@ package com.cryallen.wanlearning.ui.ext
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Build
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +37,7 @@ import com.cryallen.wanlearning.ui.view.magicindicator.buildins.commonnavigator.
 import com.cryallen.wanlearning.ui.view.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator
 import com.cryallen.wanlearning.ui.view.viewpager.ScaleTransitionPagerTitleView
 import com.cryallen.wanlearning.utils.GlobalUtils
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 
@@ -205,6 +206,7 @@ fun LoadService<*>.showLoading() {
 fun setLoadingColor(loadService: LoadService<Any>) {
 	loadService.setCallBack(LoadingCallback::class.java) { _, view ->
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintMode = PorterDuff.Mode.SRC_ATOP
 			view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintList = ColorStateList.valueOf(GlobalUtils.getThemeColor())
 		}
 	}
@@ -307,4 +309,35 @@ fun AppCompatActivity.showMessage(
 			getActionButton(WhichButton.POSITIVE).updateTextColor(GlobalUtils.getThemeColor())
 			getActionButton(WhichButton.NEGATIVE).updateTextColor(GlobalUtils.getThemeColor())
 		}
+}
+
+/**
+ * 根据控件的类型设置主题，注意，控件具有优先级， 基本类型的控件建议放到最后，像 Textview，FragmentLayout，不然会出现问题，
+ * 列如下面的BottomNavigationViewEx他的顶级父控件为FragmentLayout，如果先 is Fragmentlayout判断在 is BottomNavigationViewEx上面
+ * 那么就会直接去执行 is FragmentLayout的代码块 跳过 is BottomNavigationViewEx的代码块了
+ */
+fun setUiTheme(color: Int, vararg anyList: Any?) {
+	anyList.forEach { view ->
+		view?.let {
+			when (it) {
+				is LoadService<*> -> setLoadingColor(it as LoadService<Any>)
+				is Toolbar -> it.setBackgroundColor(color)
+				is TextView -> it.setTextColor(color)
+				is LinearLayout -> it.setBackgroundColor(color)
+				is ConstraintLayout -> it.setBackgroundColor(color)
+				is FrameLayout -> it.setBackgroundColor(color)
+			}
+		}
+	}
+}
+
+/**
+ * 判断是否为空 并传入相关操作
+ */
+inline fun <reified T> T?.notNull(notNullAction: (T) -> Unit, nullAction: () -> Unit = {}) {
+	if (this != null) {
+		notNullAction.invoke(this)
+	} else {
+		nullAction.invoke()
+	}
 }

@@ -15,7 +15,9 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.color.colorChooser
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.data.remote.ServiceCreator
+import com.cryallen.wanlearning.ui.activity.WebViewActivity
 import com.cryallen.wanlearning.ui.ext.initBack
 import com.cryallen.wanlearning.ui.ext.showMessage
 import com.cryallen.wanlearning.ui.view.preference.CheckBoxPreference
@@ -74,7 +76,7 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 					ServiceCreator.cookieJar.clear()
 					//清空账号
 					CacheUtils.setUser(null)
-					//appViewModel.userInfo.value = null
+					appViewModel.userInfo.value = null
 				})
 			false
 		}
@@ -110,7 +112,8 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 						findPreference<CheckBoxPreference>("top")?.setBottonColor()
 						toolbarView?.setBackgroundColor(color)
 						//通知其他界面立马修改配置
-						//appViewModel.appColor.value = color
+						appViewModel.appColor.value = color
+						colorPreview?.setView()
 					}
 					getActionButton(WhichButton.POSITIVE).updateTextColor(
 						GlobalUtils.getThemeColor()
@@ -126,7 +129,6 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 		}
 
 		findPreference<Preference>("version")?.setOnPreferenceClickListener {
-			//Beta.checkUpgrade(true, false)
 			false
 		}
 
@@ -142,6 +144,7 @@ class SettingFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPr
 		}
 
 		findPreference<Preference>("project")?.setOnPreferenceClickListener {
+			WebViewActivity.start(requireContext(),"WanLearning","https://github.com/cr330326/WanLearning")
 			false
 		}
 	}

@@ -6,9 +6,11 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.cryallen.wanlearning.R
 import com.cryallen.wanlearning.WanApplication
@@ -286,5 +288,25 @@ object GlobalUtils {
      */
     fun setThemeColor(color: Int) {
         XKeyValue.put("color", color)
+    }
+
+    /**
+     * 设置shap文件的颜色
+     *
+     * @param view
+     * @param color
+     */
+    fun setShapColor(view: View, color: Int) {
+        val drawable = view.background as GradientDrawable
+        drawable.setColor(color)
+    }
+
+    /**
+     * 设置shap的渐变颜色
+     */
+    fun setShapColor(view: View, color: IntArray, orientation: GradientDrawable.Orientation) {
+        val drawable = view.background as GradientDrawable
+        drawable.orientation = orientation//渐变方向
+        drawable.colors = color//渐变颜色数组
     }
 }

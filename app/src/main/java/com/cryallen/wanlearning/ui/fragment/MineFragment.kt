@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentMineBinding
 import com.cryallen.wanlearning.extension.loadCircle
 import com.cryallen.wanlearning.ui.activity.WebViewActivity
+import com.cryallen.wanlearning.ui.ext.notNull
+import com.cryallen.wanlearning.ui.ext.setUiTheme
 import com.cryallen.wanlearning.utils.CacheUtils
 import com.cryallen.wanlearning.utils.GlobalUtils
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
@@ -42,6 +45,14 @@ class MineFragment : BaseFragment(){
 	override fun initView(savedInstanceState: Bundle?) {
 		binding.meImage.loadCircle(GlobalUtils.randomImage())
 		binding.click = ProxyClick()
+
+		appViewModel.appColor.value?.let {
+			setUiTheme(it, binding.meLinear, binding.meIntegral)
+		}
+
+		appViewModel.userInfo.value?.let {
+			if(it.nickname.isEmpty()) binding.meName.text = it.username else binding.meName.text = it.nickname
+		}
 	}
 
 	override fun createObserver() {
@@ -59,6 +70,23 @@ class MineFragment : BaseFragment(){
 				binding.meInfo.text ="id：${response.data.userId}  排名：${response.data.rank}"
 				binding.meIntegral.text = response.data.coinCount.toString()
 				binding.meIntegral.visibility = View.VISIBLE
+			})
+		}
+
+		appViewModel.run {
+			appColor.observe(this@MineFragment, Observer {
+				setUiTheme(it, binding.meLinear, binding.meIntegral)
+			})
+
+			userInfo.observe(this@MineFragment, Observer {
+				it.notNull({
+					if(it.nickname.isEmpty()) binding.meName.text = it.username else binding.meName.text = it.nickname
+					loadDataOnce()
+				},{
+					binding.meName.text = GlobalUtils.getString(R.string.mine_item_hint_login)
+					binding.meInfo.text = GlobalUtils.getString(R.string.mine_item_hint_info)
+					binding.meIntegral.visibility = View.GONE
+				})
 			})
 		}
 	}

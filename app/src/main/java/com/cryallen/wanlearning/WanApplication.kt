@@ -2,6 +2,11 @@ package com.cryallen.wanlearning
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
+import com.cryallen.wanlearning.ui.event.AppViewModel
+import com.cryallen.wanlearning.ui.event.EventViewModel
 import com.cryallen.wanlearning.ui.view.loadcallback.EmptyCallback
 import com.cryallen.wanlearning.ui.view.loadcallback.ErrorCallback
 import com.cryallen.wanlearning.ui.view.loadcallback.LoadingCallback
@@ -18,7 +23,14 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
  * @author vsh9p8q
  * @DATE 2021/9/12
  ***/
-class WanApplication : Application() {
+
+//Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
+val appViewModel: AppViewModel by lazy { WanApplication.appViewModelInstance }
+
+//Application全局的ViewModel，用于发送全局通知操作
+val eventViewModel: EventViewModel by lazy { WanApplication.eventViewModelInstance }
+
+class WanApplication : Application(), ViewModelStoreOwner {
 
 	init {
 		//默认打开日志开关
@@ -50,15 +62,28 @@ class WanApplication : Application() {
 		}
 	}
 
+	private lateinit var mAppViewModelStore: ViewModelStore
+
+	private var mFactory: ViewModelProvider.Factory? = null
+
 	override fun attachBaseContext(base: Context?) {
 		super.attachBaseContext(base)
+	}
+
+	override fun getViewModelStore(): ViewModelStore {
+		return mAppViewModelStore
 	}
 
 	override fun onCreate() {
 		super.onCreate()
 		LogUtils.d("Logger", "-----------WanApplication Beginning-----------")
-		instance = this
 		XKeyValue.init(this)
+
+		mAppViewModelStore = ViewModelStore()
+
+		instance = this
+		appViewModelInstance = getAppViewModelProvider().get(AppViewModel::class.java)
+		eventViewModelInstance = getAppViewModelProvider().get(EventViewModel::class.java)
 
 		//界面加载管理 初始化
 		LoadSir.beginBuilder()
@@ -68,8 +93,24 @@ class WanApplication : Application() {
 			.commit()
 	}
 
+	/**
+	 * 获取一个全局的ViewModel
+	 */
+	private fun getAppViewModelProvider(): ViewModelProvider {
+		return ViewModelProvider(this, this.getAppFactory())
+	}
+
+	private fun getAppFactory(): ViewModelProvider.Factory {
+		if (mFactory == null) {
+			mFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
+		}
+		return mFactory as ViewModelProvider.Factory
+	}
+
 	companion object {
 		lateinit var instance: Application
+		lateinit var eventViewModelInstance: EventViewModel
+		lateinit var appViewModelInstance: AppViewModel
 	}
 
 }

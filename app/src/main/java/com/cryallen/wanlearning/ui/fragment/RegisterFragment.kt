@@ -10,6 +10,7 @@ import android.widget.CompoundButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentRegisterBinding
 import com.cryallen.wanlearning.ui.ext.initBack
@@ -50,6 +51,11 @@ class RegisterFragment : BaseFragment(){
 			this.activity.finish()
 		}
 
+		//设置颜色跟主题颜色一致
+		appViewModel.appColor.value?.let {
+			GlobalUtils.setShapColor(binding.registerAndLogin, it)
+			binding.registerToolbar.toolbar.setBackgroundColor(it)
+		}
 	}
 
 	override fun createObserver() {
@@ -64,6 +70,8 @@ class RegisterFragment : BaseFragment(){
 
 				CacheUtils.setUser(response.data)
 				CacheUtils.setIsLogin(true)
+
+				appViewModel.userInfo.value = response.data
 
 				registerHandler.postDelayed({
 					this.activity.finish()
