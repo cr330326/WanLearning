@@ -176,8 +176,8 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	 */
 	private suspend fun requestIntegral() = withContext(Dispatchers.IO) {
 		coroutineScope {
-			val knowledgeData = async { remoteRequest.getIntegral() }
-			knowledgeData.await()
+			val integralData = async { remoteRequest.getIntegral() }
+			integralData.await()
 		}
 	}
 
@@ -186,8 +186,8 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	 */
 	private suspend fun requestLogin(username : String, pwd: String) = withContext(Dispatchers.IO) {
 		coroutineScope {
-			val knowledgeData = async { remoteRequest.login(username,pwd) }
-			knowledgeData.await()
+			val loginData = async { remoteRequest.login(username,pwd) }
+			loginData.await()
 		}
 	}
 
@@ -196,8 +196,8 @@ class RemoteRepository private constructor(private val remoteRequest: RemoteRequ
 	 */
 	private suspend fun requestRegister(username : String, pwd: String, confirmPwd: String) = withContext(Dispatchers.IO) {
 		coroutineScope {
-			val knowledgeData = async { remoteRequest.register(username,pwd,confirmPwd) }
-			knowledgeData.await()
+			val registerData = async { remoteRequest.register(username,pwd,confirmPwd) }
+			registerData.await()
 		}
 	}
 

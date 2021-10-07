@@ -26,9 +26,6 @@ class HomeViewModel(private val repository: RemoteRepository) : BaseViewModel() 
 	//首页文章列表数据
 	var articleDataList = ArrayList<ModelResponse.Article>()
 
-	//轮播图数据
-	var bannerList = ArrayList<ModelResponse.Banner>()
-
 	private var articleLiveEvent = SingleLiveEvent<Int>()
 
 	private var bannerLiveEvent = SingleLiveEvent<Any>()

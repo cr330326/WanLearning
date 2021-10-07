@@ -90,7 +90,7 @@
                 <CheckBox
                     android:layout_width="@dimen/qb_px_48"
                     android:layout_height="@dimen/qb_px_48"
-                    android:layout_marginRight="@dimen/qb_px_15"
+                    android:layout_marginRight="@dimen/qb_px_12"
                     android:button="@drawable/key_visibily_selector"
                     android:checked="false"
                     android:visibility="@{viewModel.passwordVisible}"

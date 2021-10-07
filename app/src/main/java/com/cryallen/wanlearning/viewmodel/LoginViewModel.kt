@@ -68,6 +68,8 @@ class LoginViewModel(private val repository: RemoteRepository) : BaseViewModel()
 
 	private var loginLiveEvent = SingleLiveEvent<RequestParam>()
 
+	private var registerAndLoginLiveEvent = SingleLiveEvent<RequestParam>()
+
 	//从Repository层进行登陆操作
 	val loginLiveData = Transformations.switchMap(loginLiveEvent) {
 		liveData {
@@ -80,9 +82,32 @@ class LoginViewModel(private val repository: RemoteRepository) : BaseViewModel()
 		}
 	}
 
+	//从Repository层进行注册并登陆操作
+	val registerAndLoginLiveData = Transformations.switchMap(registerAndLoginLiveEvent) {
+		liveData {
+			val userInfo = ModelResponse.UserInfo()
+			val registerAndLoginResult = try {
+				val registerResult = repository.register(it!!.username,it.pwd,it.confirmPwd)
+				if (registerResult.isSucces()){
+					Result.success(repository.login(it!!.username,it.pwd))
+				}else{
+					Result.success(ApiResponse<ModelResponse.UserInfo>(registerResult.errorCode,registerResult.errorMsg,userInfo))
+				}
+			} catch (e: Exception) {
+				Result.failure<ApiResponse<ModelResponse.UserInfo>>(e)
+			}
+			emit(registerAndLoginResult)
+		}
+	}
+
 	//开始登陆
 	fun onLogin(username: String, pwd: String) {
 		loginLiveEvent.value = RequestParam(username,pwd)
+	}
+
+	//开始注册
+	fun onRegister(username: String, pwd: String,confirmPwd: String) {
+		registerAndLoginLiveEvent.value = RequestParam(username,pwd,confirmPwd)
 	}
 
 	inner class RequestParam(val username: String, val pwd: String,val confirmPwd: String = "")

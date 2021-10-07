@@ -1,7 +1,5 @@
 package com.cryallen.wanlearning.model.bean
 
-import android.os.Parcelable
-
 /***
  * 服务器响应类
  * @author vsh9p8q

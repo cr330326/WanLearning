@@ -2,6 +2,7 @@ package com.cryallen.wanlearning.ui.fragment
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +18,6 @@ import com.cryallen.wanlearning.utils.CacheUtils
 import com.cryallen.wanlearning.utils.GlobalUtils
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
 import com.cryallen.wanlearning.viewmodel.LoginViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 /***
  * 登陆页面
@@ -31,7 +29,7 @@ class LoginFragment : BaseFragment(){
 
 	private val binding get() = _binding!!
 
-	private val loginHandler = Handler()
+	private val loginHandler = Handler(Looper.getMainLooper()!!)
 
 	private val viewModel by lazy { ViewModelProvider(this, InjectorProvider.getLoginViewModelFactory()).get(LoginViewModel::class.java) }
 
