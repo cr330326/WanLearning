@@ -38,16 +38,20 @@
 ### 感谢
 
 - 数据来源：[玩 Android](https://www.wanandroid.com/blog/show/2)
+- 项目灵感：[JetpackMvvm](https://github.com/hegaojian/JetpackMvvm)
 
-- [UnPeek-LiveData](https://github.com/KunMinX/UnPeek-LiveData)事件通知
-- [LoadSir](https://github.com/KingJA/LoadSir)  加载反馈
-- [Retrofit](https://github.com/square/retrofit) 网络请求框架封装
-- [Glide](https://github.com/bumptech/glide)  图片加载
-- [OkHttp](https://github.com/square/okhttp) 网络请求
-- [Gson](https://github.com/google/gson) Gson 解析
-- [Permissionx](https://github.com/guolindev/PermissionX)  动态请求权限封装
-- [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout) 下拉刷新框架
-- [VasSonic](https://github.com/Tencent/VasSonic) 提升H5首屏加载速度
+
+
+**第三方库**
+
+- 事件通知：[UnPeek-LiveData](https://github.com/KunMinX/UnPeek-LiveData) 
+- 加载反馈：[LoadSir](https://github.com/KingJA/LoadSir)  
+- 网络请求框架：[OkHttp](https://github.com/square/okhttp)、[Retrofit](https://github.com/square/retrofit) 
+- 图片库：[Glide](https://github.com/bumptech/glide)   
+- Json 解析库：[Gson](https://github.com/google/gson) 
+- 动态请求权限封装：[Permissionx](https://github.com/guolindev/PermissionX) 
+- 下拉刷新框架：[SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout) 
+- 提升H5首屏加载速度：[VasSonic](https://github.com/Tencent/VasSonic) 
 
 
 
