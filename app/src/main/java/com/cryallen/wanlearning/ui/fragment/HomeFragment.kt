@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentHomeBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
@@ -62,7 +63,7 @@ class HomeFragment : BaseFragment(){
 			setOnMenuItemClickListener {
 				when (it.itemId) {
 					R.id.home_search -> {
-						//nav().navigateAction(R.id.action_mainfragment_to_searchFragment)
+						//跳转到搜索页面
 					}
 				}
 				true
@@ -169,6 +170,13 @@ class HomeFragment : BaseFragment(){
 					refreshLayoutBinding.recyclerView.scrollToPosition(0)
 				}
 			})
+		}
+
+		appViewModel.run {
+			//监听全局的主题颜色改变
+			appColor.observe(this@HomeFragment) {
+				setUiTheme(it, binding.homeToolbar.toolbar, loadService)
+			}
 		}
 	}
 

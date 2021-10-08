@@ -122,10 +122,7 @@ abstract class BaseActivity : AppCompatActivity() {
 	 * 初始化状态栏背景色
 	 */
 	protected open fun setupViews() {
-		appViewModel.appColor.observe(this, Observer {
-			supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
-			setStatusBarBackground()
-		})
+
 	}
 
 	/**

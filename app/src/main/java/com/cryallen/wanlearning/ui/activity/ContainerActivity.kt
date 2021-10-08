@@ -4,14 +4,15 @@ import com.cryallen.wanlearning.base.BaseFragment
 
 import android.os.Bundle
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.constant.CommonConfig
 import com.cryallen.wanlearning.databinding.ActivityContainerBinding
-import com.cryallen.wanlearning.extension.setOnClickListener
-import com.cryallen.wanlearning.utils.GlobalUtils
 
 import java.lang.RuntimeException
 import java.lang.ref.WeakReference
@@ -55,7 +56,10 @@ class ContainerActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
-		super.setupViews()
+		appViewModel.appColor.observe(this, Observer {
+			supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+			setStatusBarBackground()
+		})
 	}
 
 	override fun onDestroy() {

@@ -103,6 +103,7 @@ class LoginFragment : BaseFragment(){
 		/** 注册 */
 		fun clickRegister() {
 			startContainerActivity(RegisterFragment::class.java.canonicalName)
+			activity.finish()
 		}
 
 		var onCheckedChangeListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->

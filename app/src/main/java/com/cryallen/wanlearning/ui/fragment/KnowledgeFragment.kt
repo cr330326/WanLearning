@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.IncludeListBinding
 import com.cryallen.wanlearning.databinding.IncludeRefreshLayoutBinding
 import com.cryallen.wanlearning.exception.ExceptionHandle
 import com.cryallen.wanlearning.extension.dp2px
 import com.cryallen.wanlearning.ui.adapter.KnowledgeAdapter
-import com.cryallen.wanlearning.ui.ext.init
-import com.cryallen.wanlearning.ui.ext.showEmpty
-import com.cryallen.wanlearning.ui.ext.showError
-import com.cryallen.wanlearning.ui.ext.showLoading
+import com.cryallen.wanlearning.ui.ext.*
 import com.cryallen.wanlearning.ui.view.SpaceItemDecoration
 import com.cryallen.wanlearning.viewmodel.InjectorProvider
 import com.cryallen.wanlearning.viewmodel.TreeViewModel
@@ -83,6 +81,13 @@ class KnowledgeFragment : BaseFragment(){
 				viewModel.knowledgeList.addAll(response.data)
 				knowAdapter.notifyDataSetChanged()
 			})
+		}
+
+		appViewModel.run {
+			//监听全局的主题颜色改变
+			appColor.observe(this@KnowledgeFragment) {
+				setUiTheme(it, loadService)
+			}
 		}
 	}
 

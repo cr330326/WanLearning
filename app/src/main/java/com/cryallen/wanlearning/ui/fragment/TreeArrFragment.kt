@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentTreeBinding
 import com.cryallen.wanlearning.databinding.IncludeViewpagerBinding
 import com.cryallen.wanlearning.ui.ext.bindViewPager2
 import com.cryallen.wanlearning.ui.ext.init
+import com.cryallen.wanlearning.ui.ext.setUiTheme
 
 /***
  * 聚合Fragment
@@ -46,10 +48,16 @@ class TreeArrFragment : BaseFragment() {
 		viewPagerBinding.viewPager.init(this,fragments)
 		//初始化 magic_indicator
 		viewPagerBinding.magicIndicator.bindViewPager2(viewPagerBinding.viewPager,titleList)
+		appViewModel.appColor.value?.let { setUiTheme(it, viewPagerBinding.viewpagerLinear) }
 	}
 
 	override fun createObserver() {
-
+		appViewModel.run {
+			//监听全局的主题颜色改变
+			appColor.observe(this@TreeArrFragment) {
+				setUiTheme(it, viewPagerBinding.viewpagerLinear)
+			}
+		}
 	}
 
 	companion object {

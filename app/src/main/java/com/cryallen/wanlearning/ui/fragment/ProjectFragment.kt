@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseFragment
 import com.cryallen.wanlearning.databinding.FragmentProjectBinding
 import com.cryallen.wanlearning.databinding.IncludeViewpagerBinding
@@ -50,6 +51,7 @@ class ProjectFragment : BaseFragment(){
 		viewPagerBinding.viewPager.init(this,viewModel.fragments)
 		//初始化 magic_indicator
 		viewPagerBinding.magicIndicator.bindViewPager2(viewPagerBinding.viewPager,viewModel.titleList)
+		appViewModel.appColor.value?.let { setUiTheme(it, viewPagerBinding.viewpagerLinear,loadService) }
 	}
 
 	override fun createObserver() {
@@ -81,6 +83,13 @@ class ProjectFragment : BaseFragment(){
 				viewPagerBinding.viewPager.adapter?.notifyDataSetChanged()
 				viewPagerBinding.viewPager.offscreenPageLimit = viewModel.fragments.size
 			})
+		}
+
+		appViewModel.run {
+			//监听全局的主题颜色改变
+			appColor.observe(this@ProjectFragment) {
+				setUiTheme(it, viewPagerBinding.viewpagerLinear, loadService)
+			}
 		}
 	}
 

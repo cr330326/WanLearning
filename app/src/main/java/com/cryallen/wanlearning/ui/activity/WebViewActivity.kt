@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.WindowManager
 import android.webkit.*
+import androidx.lifecycle.Observer
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.databinding.ActivityWebBinding
 import com.cryallen.wanlearning.extension.preCreateSession
@@ -72,7 +75,6 @@ class WebViewActivity : BaseActivity() {
 	}
 
 	override fun setupViews(){
-		super.setupViews()
 		initTitleBar()
 		initWebView()
 		if (sonicSessionClient != null) {
@@ -81,6 +83,11 @@ class WebViewActivity : BaseActivity() {
 		} else {
 			binding.webView.loadUrl(linkUrl)
 		}
+
+		appViewModel.appColor.observe(this, Observer {
+			supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+			setStatusBarBackground()
+		})
 	}
 
 	private fun initTitleBar() {

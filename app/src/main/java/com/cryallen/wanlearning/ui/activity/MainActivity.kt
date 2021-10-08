@@ -4,10 +4,13 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
 import com.cryallen.wanlearning.R
+import com.cryallen.wanlearning.appViewModel
 import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.databinding.ActivityMainBinding
 import com.cryallen.wanlearning.extension.setOnClickListener
@@ -30,6 +33,8 @@ class MainActivity : BaseActivity() {
 		get() = _binding!!
 
 	private var backPressTime = 0L
+
+	private var currentTabIndex = 0
 
 	private var homeFragment: HomeFragment? = null
 
@@ -74,7 +79,6 @@ class MainActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
-		super.setupViews()
 		binding.bottomLine.setBackgroundColor(GlobalUtils.getThemeColor())
 		setOnClickListener(
 			binding.navigationBar.btnMenuHome, binding.navigationBar.btnMenuWechat, binding.navigationBar.btnMenuProject, binding.navigationBar.btnMenuNavi,
@@ -99,6 +103,14 @@ class MainActivity : BaseActivity() {
 			}
 		}
 		setTabSelection(0)
+
+		appViewModel.appColor.observe(this, Observer {
+			supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+			setStatusBarBackground()
+
+			binding.bottomLine.setBackgroundColor(GlobalUtils.getThemeColor())
+			selectCurrentTab(currentTabIndex)
+		})
 	}
 
 	private fun setTabSelection(index: Int) {
@@ -107,6 +119,7 @@ class MainActivity : BaseActivity() {
 			hideFragments(this)
 			when (index) {
 				0 -> {
+					currentTabIndex = 0
 					binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuHome.setTextColor(GlobalUtils.getThemeColor())
 					if (homeFragment == null) {
@@ -117,6 +130,7 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				1 -> {
+					currentTabIndex = 1
 					binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtils.getThemeColor())
 					if (wechatFragment == null) {
@@ -127,6 +141,7 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				2 -> {
+					currentTabIndex = 2
 					binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuProject.setTextColor(GlobalUtils.getThemeColor())
 					if (projectFragment == null) {
@@ -137,6 +152,7 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				3 -> {
+					currentTabIndex = 3
 					binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtils.getThemeColor())
 					if (treeArrFragment == null) {
@@ -147,6 +163,7 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				4 -> {
+					currentTabIndex = 4
 					binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuMine.setTextColor(GlobalUtils.getThemeColor())
 					if (mineFragment == null) {
@@ -157,6 +174,7 @@ class MainActivity : BaseActivity() {
 					}
 				}
 				else -> {
+					currentTabIndex = 0
 					binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
 					binding.navigationBar.tvMenuHome.setTextColor(GlobalUtils.getThemeColor())
 					if (homeFragment == null) {
@@ -186,6 +204,35 @@ class MainActivity : BaseActivity() {
 		//我的
 		binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtils.getColor(R.color.color_default)))
 		binding.navigationBar.tvMenuMine.setTextColor(GlobalUtils.getColor(R.color.color_default))
+	}
+
+	private fun selectCurrentTab(index: Int) {
+		when (index) {
+			0 -> {
+				binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuHome.setTextColor(GlobalUtils.getThemeColor())
+			}
+			1 -> {
+				binding.navigationBar.ivMenuWechat.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuWechat.setTextColor(GlobalUtils.getThemeColor())
+			}
+			2 -> {
+				binding.navigationBar.ivMenuProject.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuProject.setTextColor(GlobalUtils.getThemeColor())
+			}
+			3 -> {
+				binding.navigationBar.ivMenuNavi.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuNavi.setTextColor(GlobalUtils.getThemeColor())
+			}
+			4 -> {
+				binding.navigationBar.ivMenuMine.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuMine.setTextColor(GlobalUtils.getThemeColor())
+			}
+			else -> {
+				binding.navigationBar.ivMenuHome.setIconTint(ColorStateList.valueOf(GlobalUtils.getThemeColor()))
+				binding.navigationBar.tvMenuHome.setTextColor(GlobalUtils.getThemeColor())
+			}
+		}
 	}
 
 	private fun hideFragments(transaction: FragmentTransaction) {
