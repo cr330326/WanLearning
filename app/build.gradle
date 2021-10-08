@@ -172,5 +172,5 @@ dependencies {
     implementation ("com.permissionx.guolindev:permissionx:${versions.permissionx}")
 
     // Lottie
-    //implementation("com.airbnb.android:lottie:${versions.lottie}")
+    implementation("com.airbnb.android:lottie:${versions.lottie}")
 }

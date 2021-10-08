@@ -1,9 +1,6 @@
 package com.cryallen.wanlearning.ui.activity
 
 import android.os.Bundle
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
 import androidx.lifecycle.lifecycleScope
 import com.cryallen.wanlearning.base.BaseActivity
 import com.cryallen.wanlearning.constant.CommonConfig
@@ -26,21 +23,8 @@ class SplashActivity : BaseActivity() {
 	private val binding: ActivitySplashBinding
 		get() = _binding!!
 
-	private val splashDuration = 1 * 1000L
-
-	private val alphaAnimation by lazy {
-		AlphaAnimation(0.5f, 1.0f).apply {
-			duration = splashDuration
-			fillAfter = true
-		}
-	}
-
-	private val scaleAnimation by lazy {
-		ScaleAnimation(1f, 1.05f, 1f, 1.05f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
-			duration = splashDuration
-			fillAfter = true
-		}
-	}
+	//延迟3S进入首页
+	private val splashDuration = 3 * 1000L
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -54,8 +38,6 @@ class SplashActivity : BaseActivity() {
 	}
 
 	override fun setupViews() {
-		binding.ivSlogan.startAnimation(alphaAnimation)
-		binding.ivSplashPicture.startAnimation(scaleAnimation)
 		lifecycleScope.launch {
 			delay(splashDuration)
 			MainActivity.start(this@SplashActivity)

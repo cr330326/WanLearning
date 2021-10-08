@@ -12,7 +12,7 @@
     </style>
 
     <style name="WanLearning.SplashActivity">
-        <item name="android:windowBackground">@mipmap/bg_splash_background</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
