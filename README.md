@@ -25,11 +25,13 @@
 
 ### 更新记录
 
-V1.0.0
+[版本日志](https://github.com/cr330326/WanLearning/releases/) 
 
-- 第一个版本，包括首页、公众号、项目、导航、我的5个Tab项页面功能
-- 支持协程方式获取网络请求数据，LiveData来更新UI
-- 支持登陆和注册功能、支持自定义切换主题颜色、支持加载Web Url
+
+
+### APK下载
+
+[Github下载](https://github.com/cr330326/WanLearning/blob/main/app/release/com.cryallen.wanlearning_1.0.0_release.apk)
 
 
 
