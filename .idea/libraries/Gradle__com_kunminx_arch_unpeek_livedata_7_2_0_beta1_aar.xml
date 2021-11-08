@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.kunminx.arch:unpeek-livedata:7.2.0-beta1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/30a3c3bb05d26fbc888541e10637a453/transformed/jetified-unpeek-livedata-7.2.0-beta1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/30a3c3bb05d26fbc888541e10637a453/transformed/jetified-unpeek-livedata-7.2.0-beta1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/30a3c3bb05d26fbc888541e10637a453/transformed/jetified-unpeek-livedata-7.2.0-beta1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

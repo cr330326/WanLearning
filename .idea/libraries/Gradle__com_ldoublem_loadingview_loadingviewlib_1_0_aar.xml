@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.ldoublem.loadingview:loadingviewlib:1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c71a8bcb1b3eadad717bde0a5044260b/transformed/jetified-loadingviewlib-1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c71a8bcb1b3eadad717bde0a5044260b/transformed/jetified-loadingviewlib-1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c71a8bcb1b3eadad717bde0a5044260b/transformed/jetified-loadingviewlib-1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ldoublem.loadingview/loadingviewlib/1.0/fca5e30eaacbaa37c8e022cd3713fbaaaa42232f/loadingviewlib-1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ldoublem.loadingview/loadingviewlib/1.0/ae856c9b67ba4639b010b0f17307b537fc537bd/loadingviewlib-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

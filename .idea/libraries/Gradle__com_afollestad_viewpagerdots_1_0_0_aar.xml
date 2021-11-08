@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.afollestad:viewpagerdots:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/2a407d5147965ccee150693ac724749c/transformed/jetified-viewpagerdots-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2a407d5147965ccee150693ac724749c/transformed/jetified-viewpagerdots-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2a407d5147965ccee150693ac724749c/transformed/jetified-viewpagerdots-1.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad/viewpagerdots/1.0.0/6cae02042717f2206aeb919c7fd1a5d944ad9d29/viewpagerdots-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.afollestad/viewpagerdots/1.0.0/728c56f17daacca04b994244f0b74850f3bd6d1f/viewpagerdots-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

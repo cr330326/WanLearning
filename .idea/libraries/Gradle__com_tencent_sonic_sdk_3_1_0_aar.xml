@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tencent.sonic:sdk:3.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5abd3cb31894817a0c32df5cc8ca9ba9/transformed/jetified-sdk-3.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5abd3cb31894817a0c32df5cc8ca9ba9/transformed/jetified-sdk-3.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5abd3cb31894817a0c32df5cc8ca9ba9/transformed/jetified-sdk-3.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.sonic/sdk/3.1.0/62778b89ce321621508cebca331077a119f95c0e/sdk-3.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.sonic/sdk/3.1.0/ade878a99d955e735037a99eccc6b76b5d72fc52/sdk-3.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

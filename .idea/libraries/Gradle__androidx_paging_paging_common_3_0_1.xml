@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.paging:paging-common:3.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.paging/paging-common/3.0.1/2fda6629c22f1d9d65264c3e3845022cc535e7ef/paging-common-3.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.paging/paging-common/3.0.1/2971180c28b253e3d1a4951e96318eacea9d676e/paging-common-3.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
