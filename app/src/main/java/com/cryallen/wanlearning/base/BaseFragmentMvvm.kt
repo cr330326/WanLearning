@@ -108,11 +108,11 @@ abstract class BaseFragmentMvvm<V : ViewDataBinding, VM : BaseViewModel> : BaseF
 	 * @param <T> 泛型参数,必须继承ViewMode
 	 * @return 生成的viewMode实例
 	</T> */
-	private fun <T : ViewModel?> createViewModel(fragment: Fragment, cls: Class<T>): T {
+	private fun <T : ViewModel> createViewModel(fragment: Fragment, cls: Class<T>): T {
 		return ViewModelProvider(fragment)[cls]
 	}
 
-	//刷新布局数据
+    //刷新布局数据
 	fun refreshLayout() {
 		if(viewModelId > 0){
 			binding.setVariable(viewModelId, viewModel)

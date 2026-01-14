@@ -50,6 +50,7 @@
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/WanLearning.SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

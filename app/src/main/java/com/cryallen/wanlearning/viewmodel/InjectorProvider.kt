@@ -33,7 +33,7 @@ object InjectorProvider {
 class HomeViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return HomeViewModel(repository) as T
 	}
 }
@@ -44,7 +44,7 @@ class HomeViewModelFactory(private val repository: RemoteRepository) : ViewModel
 class WechatViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return WechatViewModel(repository) as T
 	}
 }
@@ -56,7 +56,7 @@ class WechatViewModelFactory(private val repository: RemoteRepository) : ViewMod
 class ProjectViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return ProjectViewModel(repository) as T
 	}
 }
@@ -68,7 +68,7 @@ class ProjectViewModelFactory(private val repository: RemoteRepository) : ViewMo
 class TreeViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return TreeViewModel(repository) as T
 	}
 }
@@ -79,7 +79,7 @@ class TreeViewModelFactory(private val repository: RemoteRepository) : ViewModel
 class MineViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return MineViewModel(repository) as T
 	}
 }
@@ -90,7 +90,7 @@ class MineViewModelFactory(private val repository: RemoteRepository) : ViewModel
 class LoginViewModelFactory(private val repository: RemoteRepository) : ViewModelProvider.NewInstanceFactory() {
 
 	@Suppress("UNCHECKED_CAST")
-	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+	override fun <T : ViewModel> create(modelClass: Class<T>): T {
 		return LoginViewModel(repository) as T
 	}
 }
